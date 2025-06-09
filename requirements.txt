@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+prefect
+requests
+python-multipart
+pillow
