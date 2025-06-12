@@ -49,12 +49,62 @@ curl -X POST "http://localhost:8000/analyze-email" \
 ```json
 {
   "label": "Order",
-  "extracted content": {
+  "extracted_content": {
     "products": ["widgets"],
     "amount": 19.99,
-    "shipping_address": "123 Main St."
+    "shipping_address": {
+      "address_line1": "123 Main St.",
+      "address_line2": "Apt 4B",
+      "city": "Springfield",
+      "state": "IL",
+      "pincode": "62704",
+      "phone_number": "555-123-4567"
+    },
+    "billing_address": {
+      "address_line1": "123 Main St.",
+      "address_line2": "Apt 4B",
+      "city": "Springfield",
+      "state": "IL",
+      "pincode": "62704",
+      "phone_number": "555-123-4567"
+    }
   }
 }
+```
+
+## Running Unit Tests
+
+This project uses `unittest` for testing. To run all tests:
+
+```bash
+python -m unittest test_main.py
+```
+
+## Checking Code Coverage
+
+To check code coverage, install the `coverage` package if you haven't already:
+
+```bash
+pip install coverage
+```
+
+Run the tests with coverage:
+
+```bash
+coverage run --source=main -m unittest test_main.py
+```
+
+Generate a coverage report in the terminal:
+
+```bash
+coverage report -m
+```
+
+Generate an HTML coverage report:
+
+```bash
+coverage html
+# Then open htmlcov/index.html in your browser
 ```
 
 ## Notes
