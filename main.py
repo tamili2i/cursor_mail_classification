@@ -1,12 +1,13 @@
 from fastapi import FastAPI, File, UploadFile, Form
 from fastapi.responses import JSONResponse
 from typing import Optional
-import email
 from email import policy
 from email.parser import BytesParser
 import requests
 import os
 import logging
+import re
+import json
 
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
 OLLAMA_MODEL = "mistral"
@@ -25,7 +26,7 @@ def parse_eml(file_bytes: bytes) -> str:
         text = msg.get_payload(decode=True).decode(errors="ignore")
     return text
 
-def call_ollama(prompt: str) -> dict:
+def call_ollama(prompt: str) -> str:
     payload = {
         "model": OLLAMA_MODEL,
         "prompt": prompt,
@@ -33,50 +34,95 @@ def call_ollama(prompt: str) -> dict:
     }
     response = requests.post(f"{OLLAMA_URL}/api/generate", json=payload, timeout=120)
     response.raise_for_status()
-    # Ollama streams output, so get the last line with 'response' key
     lines = response.text.strip().split("\n")
-    for line in reversed(lines):
-        if 'response' in line:
-            import json as js
-            try:
-                data = js.loads(line)
-                return data.get('response', '').strip()
-            except Exception:
-                continue
-    return ""
+    # Collect all response fragments
+    response_fragments = []
+    for line in lines:
+        try:
+            data = json.loads(line)
+            fragment = data.get('response', '')
+            response_fragments.append(fragment)
+        except Exception as e:
+            logging.error(f"JSON decode error: {e} for line: {line}")
+    full_response = ''.join(response_fragments).strip()
+    # logging.info(f"Full LLM response: {full_response}")
+    return full_response
+
+def extract_json_from_response(response_text):
+    # Try to find the first {...} block
+    match = re.search(r'({.*})', response_text, re.DOTALL)
+    if match:
+        json_str = match.group(1)
+        try:
+            return json.loads(json_str)
+        except Exception as e:
+            logging.error(f"JSON decode error: {e}\nJSON string: {json_str}")
+            return None
+    logging.error("No JSON object found in response.")
+    return None
 
 def analyze_email_logic(email_text: str) -> dict:
     # Prompt for extraction and classification
-    prompt = f"""
+    prompt = (
+        """
 You are an email analysis assistant. Analyze the following email and:
 1. Classify it as one of: Offer, Order, Account, Refund, Receipt, OTP.
-2. Extract purchase information: products (list), amount (number), shipping address (string). If not present, use null or empty.
+2. Extract purchase information:
+   - products (list)
+   - amount (number)
+   - shipping_address (object with: address_line1, address_line2, city, state, pincode, phone_number)
+   - billing_address (object with: address_line1, address_line2, city, state, pincode, phone_number)
+If any field is missing, use null or empty.
 
-Respond ONLY in JSON with keys: label, extracted content (with products, amount, shipping_address).
+Respond ONLY in JSON with keys: label, extracted_content (with products, amount, shipping_address, billing_address).
 
 Example output:
-{{"label": "Order", "extracted content": {{"products": ["Widget"], "amount": 19.99, "shipping_address": "123 Main St."}}}}
+{
+  "label": "Order",
+  "extracted_content": {
+    "products": ["Widget"],
+    "amount": 19.99,
+    "shipping_address": {
+      "address_line1": "123 Main St.",
+      "address_line2": "Apt 4B",
+      "city": "Springfield",
+      "state": "IL",
+      "pincode": "62704",
+      "phone_number": "555-123-4567"
+    },
+    "billing_address": {
+      "address_line1": "123 Main St.",
+      "address_line2": "Apt 4B",
+      "city": "Springfield",
+      "state": "IL",
+      "pincode": "62704",
+      "phone_number": "555-123-4567"
+    }
+  }
+}
 
 Email:
 """
-    prompt += email_text
-    print(prompt)
+        + email_text
+    )
     result = call_ollama(prompt)
-    logger.debug(result)
-    # Try to parse JSON from result
-    import json
-    try:
-        parsed = json.loads(result)
+    logging.info(f"Full LLM response: {result}")
+    parsed = extract_json_from_response(result)
+    if parsed:
+        # If the model returns 'extracted content', convert to 'extracted_content' for consistency
+        if 'extracted_content' in parsed:
+            parsed['extracted_content'] = parsed.pop('extracted_content')
         return parsed
-    except Exception:
-        # fallback: return as string
-        return {"label": "Unknown", "extracted content": {}, "raw": result}
+    else:
+        return {"label": "Unknown", "extracted_content": {}, "raw": result}
 
 @app.post("/analyze-email")
 def analyze_email(
     eml_file: Optional[UploadFile] = File(None),
     text: Optional[str] = Form(None)
 ):
+    if eml_file and text:
+        return JSONResponse({"error": "Provide only one of eml_file or text, not both."}, status_code=400)
     if eml_file:
         file_bytes = eml_file.file.read()
         email_text = parse_eml(file_bytes)
@@ -85,5 +131,4 @@ def analyze_email(
     else:
         return JSONResponse({"error": "No input provided"}, status_code=400)
     result = analyze_email_logic(email_text)
-    logger.debug(result)
     return JSONResponse(result) 

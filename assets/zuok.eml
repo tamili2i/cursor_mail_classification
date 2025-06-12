@@ -1,0 +1,2892 @@
+Delivered-To: ptsntamil@gmail.com
+Received: by 2002:a05:6022:5678:b0:65:3141:bb59 with SMTP id er24csp177399lab;
+        Tue, 4 Feb 2025 03:30:49 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHIMBs4YH+Sr7Tdwv1Ak5kELE5D3LaIX8Iga0eN+OnDmNzInZR+XqHAQKuZUx7zcGzD0QUO
+X-Received: by 2002:a17:902:cec3:b0:216:7ee9:2227 with SMTP id d9443c01a7336-21dd7dd88e6mr399056115ad.36.1738668649472;
+        Tue, 04 Feb 2025 03:30:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738668649; cv=none;
+        d=google.com; s=arc-20240605;
+        b=EncmoDEIOAq1y4WrOUgW3tz6wQn8bs6JoqAL1qsFAso/JipOxJ4gqMJuGXvf9d5Y3N
+         HF+2je9jrWEUfI5tf5kZlJ63lNhv96zdNQG7fLscRI0V+hFOKDoN53QV40hZFGNBnngU
+         eWZKSZi1zHqrgYzXhpl238gHkSReNkn1gLXSw8Ak6cEhua58ufeaDJGMhGii2mLeaaii
+         3J01CoHmAHdnFNQuuMKfc6E4G3eNJE4ietoPpdSqUOy3Plu3LasOl2uUtrrKcgac8mBj
+         t43IHqHCzeS9hTSrdBskvFZ03hRl7YHBxMhmnpSnnTM5AdMaLE1vWG5bE4EJRaBmkLwv
+         jRBQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:mime-version:from:date:dkim-signature
+         :dkim-signature;
+        bh=ICyDKfctdGx6yWS17KYDmb9Jg7RtFDc+MXUNGEu6Mv4=;
+        fh=69ZrkzdExNlgusWdwLqFtPQfBFQHbDj+gtEee47XIbw=;
+        b=k4ggJmwgqY/YHB6wrWNpHJXIoHCG8m+L+Rxz6p37fG55oMBaJKLhUwKSDmYIYs63hU
+         mDzJlTo9HfA2742Q3brgrdgUhOxi+bMjdZEDnhYnk2ZVdk0CPM3iO8CZjnpu4S8720fG
+         R/cRLM5g9LM8ue+b/Aimv/ppAd4Jy3mWPgSs23PBVg/ClzmVqr2HeGmDd20XVpE1opVs
+         YrLUOekDqgCmUYvl/CAyLpacaQNtY34IorXFOV3QxLg1/r6sPeGn7/KiDlLe2rSaKJz+
+         PJZalUXeDNFnJocMsDVyvLsDrLHjYKJEsEOTNwS69ao8DjVvJe982manhNpyQ0/WjHFy
+         26ew==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@zouk.co.in header.s=lo3 header.b=BuoncYi4;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=poYfOTBN;
+       spf=pass (google.com: domain of bounces+11168589-3676-ptsntamil=gmail.com@mailerlo3.zouk.co.in designates 149.72.235.154 as permitted sender) smtp.mailfrom="bounces+11168589-3676-ptsntamil=gmail.com@mailerlo3.zouk.co.in";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=zouk.co.in
+Return-Path: <bounces+11168589-3676-ptsntamil=gmail.com@mailerlo3.zouk.co.in>
+Received: from o11.mailer.shopify.com (o11.mailer.shopify.com. [149.72.235.154])
+        by mx.google.com with ESMTPS id d9443c01a7336-21f0009f684si19868985ad.491.2025.02.04.03.30.47
+        for <ptsntamil@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 04 Feb 2025 03:30:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+11168589-3676-ptsntamil=gmail.com@mailerlo3.zouk.co.in designates 149.72.235.154 as permitted sender) client-ip=149.72.235.154;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@zouk.co.in header.s=lo3 header.b=BuoncYi4;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=poYfOTBN;
+       spf=pass (google.com: domain of bounces+11168589-3676-ptsntamil=gmail.com@mailerlo3.zouk.co.in designates 149.72.235.154 as permitted sender) smtp.mailfrom="bounces+11168589-3676-ptsntamil=gmail.com@mailerlo3.zouk.co.in";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=zouk.co.in
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zouk.co.in; h=content-type:from:mime-version:subject:x-feedback-id:to:cc: content-type:from:subject:to; s=lo3; bh=ICyDKfctdGx6yWS17KYDmb9Jg7RtFDc+MXUNGEu6Mv4=; b=BuoncYi4YPHxmEJCKsL9UE4IRZYvqQWRaYNRmArqQUG3UcinEQ8yiFhT2iSCz6HaG8ge B1QjHcgCw7Op6FlAiZzaPfRDA4or2Sr1Vc/CsChVW0lVdsWGLei2TYXF+9HiqYh2Fz0P8J BjuFTNqtGB1UgeUsswynG7vZt1ymiZwF7Bc2zdnPRjHuvyVrnmmAtbf7/GFJCaRtu1hUta WTcyZLIRJ5YPvaxBNBxDiaPbSkseYTh+ClRmyBX1uN1yCz53ZGE/AU5nrhyO+ZQ+MAvMX0 ugq9jI2E453NJiRkrofOa0zruWIfM6KKnZRGX6P2KAY5i0YCiUJ8vU1mkwj9NHtA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info; h=content-type:from:mime-version:subject:x-feedback-id:to:cc: content-type:from:subject:to; s=smtpapi; bh=ICyDKfctdGx6yWS17KYDmb9Jg7RtFDc+MXUNGEu6Mv4=; b=poYfOTBNmyRmza0p+f+yQoViXvReCWQyh3MNCP3YmGA6c/as4F+PjHrdfRH4rO4lJfHB g6vW3rFSbj7bIcXxlImm4+o5AS1Gw5HCBHe7CQDRIwvHrMrw0rPBDifm8rKNv68vKk3wuH Swjpt2s7DGpljCrpV/9YFU6sdaSUINpl8=
+Received: by recvd-canary-7b78648f67-9j4wh with SMTP id recvd-canary-7b78648f67-9j4wh-1-67A1FA66-2E 2025-02-04 11:30:46.616359482 +0000 UTC m=+7057365.874952375
+Received: from MTExNjg1ODk (unknown) by geopod-ismtpd-6 (SG) with HTTP id rsc3QdFZShaBioHofXi85A Tue, 04 Feb 2025 11:30:46.583 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=c769bd372ce9725b8d5b3b2ff2de4d9c180aea10cc3701259816afd75cd7
+Date: Tue, 04 Feb 2025 11:30:46 +0000 (UTC)
+From: Zouk <online@zouk.co.in>
+Mime-Version: 1.0
+Message-ID: <E1030004-1820FDEC03E9520E-4E81DDF3@shopify.com>
+Subject: Order #1213608 confirmed
+X-Feedback-ID: 11168589:SG
+X-SG-EID: u001.gWdZToBN6gadMMm6SPWkU+AghBEYhB6IKnfyigbQo56zjUncOxtAe8D4K4DVTd/uxCx/Iw9CKDFfjyQ5pOv1xRos9O7Vz8ODiL2EO4XkiXGQKPieaEXWjuM6tMUz8w59So1HXBtcLwSpSOVcKN+QXwr8lvvfu10LXJnNu/INvvSjSVrCyDBP97Vm/7bIoL+MTcqZxlu+RJcPUeGFtRU3gyv3c94EnlxJq9AZ2GryiH0=
+X-SG-ID: u001.SdBcvi+Evd/bQef8eZF3BpTL9BgbK5wfSJMJGMsmprDITwp3LLcgXu9gvF1Oq5oTf1VY9MM//ZCviT/P37sq3zfJUoMoEb2Xt8HfK2jM5z3ibC3wtrF2kFYhu7nfMSKRNh3Lhiv0p+yykCn2C/O+le0/QnLS6oGvVbXLl5GKBP8Iidr3JJoxbS7Z6Gk/QLPJlEDMrit8ykIOhMcrSK4kv1i0UZ/CvdGEVL71hcnqMmue2JTHbTkyfnvBJhPjv8qLtrbi9/4u9BHV4i1qblF2+irzb2x2WaO4X+bzn/RwDj2tC5sy5cDLzH+jPXBcufuSjbTYvGdnLsZePpI0LGfuqNz/5FNaHct+J74Zq6A8KUt6s7ZWfW8/L4HzrXyYx22ta3IOFY5Om0NQNf62bgk4JkXN1thGz5u5MyHKk7zpY/gujyReGLoz1UC0HRl6xbi2mf+tYCbj574fx0X3I64QwQ+mZdyMoHGCOKMwmviBYIzaWZXvoRIpmezXJKN3PV/y7BcsFNrqISFEaQAHztIoS29LKZKYXA+R9w7fm9srxgIgI4nrhRTzOmxQfdcwIN7tqFCQRg1TFaJa0pdHJzB+f0JYxBiobPGQ52RG4zqxb9lqACMDYQ7m/YTVTpkm/srmVxj75+s5CGt+pm6+gpmq1+vuSZrwROfwxHHm7tDfS879ypThSJetR6cIHgNyt/8ai2gvEAewOMBI3xHHMtiW4nnzUdlG1eGu8IjFLigZbGH8hjxMhWCayA1l+3wQi69MlzAI3Byd2Fiq73oumqUpNEvquvf+/LwWRrWIozVorSb01hK4aHQkYDNeqjnJES4sN6tH7/L4hzYMw1v7fkY2GmODelW/ZcNh7Nxo5bpe9ip1raCqyDAM4HKP/ChIn71MuJ6juSvyZQRwVd5FuCn/xrZxZ3yamIZPpQaCFhoGm8swnxc2JWw1JuX1ajwoylzhLTjZXmZWgiGh66RGbMO+TfDwiLeog6vkmrwBSqR9MombFumfDsKhEyH+rvNbSO6iYpxl4NdaUERrcTHeggn3+4kCLKJDnJAeF2ExeMI72YkC+6Nu1Wd1vxRrGduaMLyYVcCspC+v45iBINgEQcYHAGuwDSXXiiaPSjnlFpv4ewMrWOxyRlRAZBbMoJAyNMs/Zy3PIvMP8gxn2/kPwagYN6HvZSFHxIQsyDegIuT/1ynJ+5uR2Tr+waKCFuUQhoZcKrpzin7jKVBnzpH2KIyfhl5sriB9xHmtIjcIYDG+B4m1a7FZhFW21y0mnVgEHzN5Gw+qdjr3JGk4H1TmqqxOew4p8iNw/CjJLY9cVagv3q2w83/SquT0X/HiPPqMS5zfQGONphu2u1+wfLcQrbJWSTwuvfgiyKbPPy7iDgKgHzmL4NPH6fdikW8Mhj1ty7hAQqciYKiTt8H/VQUJy7ImmLav4fwVgFB1KVigPwLPaz8=
+To: ptsntamil@gmail.com
+X-Entity-ID: u001.IkutLM/3rBw3UaDFBWhdIw==
+
+--c769bd372ce9725b8d5b3b2ff2de4d9c180aea10cc3701259816afd75cd7
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+96
+
+/* What it does: Remove spaces around the email design
+added by some email clients. */
+/* Beware: It can remove the padding / Margin and add a
+background color to the compose a reply window. */
+html, body {
+Margin: 0 auto !important;
+padding: 0 !important;
+width: 100% !important;
+}
+/* What it does: Stops email clients resizing small text.
+*/
+* {
+-ms-text-size-adjust: 100%;
+-webkit-text-size-adjust: 100%;
+text-rendering: optimizeLegibility;
+}
+/* What it does: Forces Outlook.com to display emails
+full width. */
+.ExternalClass {
+width: 100%;
+}
+/* What is does: Centers email on Android 4.4 */
+div[style*=3D"Margin: 16px 0"] {
+Margin:0 !important;
+}
+/* What it does: Stops Outlook from adding extra spacing
+to tables. */
+table,
+th {
+mso-table-lspace: 0pt;
+mso-table-rspace: 0pt;
+}
+/* What it does: Fixes Outlook.com line height. */
+.ExternalClass,
+.ExternalClass * {
+line-height: 100% !important;
+}
+/* What it does: Fixes webkit padding issue. Fix for
+Yahoo mail table alignment bug. Applies table-layout to the first
+2 tables then removes for anything nested deeper. */
+table {
+border-spacing: 0 !important;
+border-collapse: collapse !important;
+border: none;
+Margin: 0 auto;
+direction: ltr;
+}
+div[style*=3D"Margin: 16px 0"] {
+Margin:0 !important;
+}
+/* What it does: Uses a better rendering method when
+resizing images in IE. */
+img {
+-ms-interpolation-mode:bicubic;
+}
+/* What it does: Overrides styles added when Yahoo's
+auto-senses a link. */
+.yshortcuts a {
+border-bottom: none !important;
+}
+/* What it does: Overrides blue, underlined link
+auto-detected by iOS Mail. */
+/* Create a class for every link style needed; this
+template needs only one for the link in the footer. */
+/* What it does: A work-around for email clients meddling
+in triggered links. */
+*[x-apple-data-detectors],  /* iOS */
+.x-gmail-data-detectors,    /* Gmail */
+.x-gmail-data-detectors *,
+.aBn {
+border-bottom: none !important;
+cursor: default !important;
+color: inherit !important;
+text-decoration: none !important;
+font-size: inherit !important;
+font-family: inherit !important;
+font-weight: inherit !important;
+line-height: inherit !important;
+}
+/* What it does: Overrides blue, underlined link
+auto-detected by Gmail. */
+u   #body a {
+color: inherit;
+text-decoration: none;
+font-size: inherit;
+font-family: inherit;
+font-weight: inherit;
+line-height: inherit;
+}
+
+/* What it does: Prevents Gmail from displaying an
+download button on large, non-linked images. */
+.a6S {
+display: none !important;
+opacity: 0.01 !important;
+}
+/* If the above doesn't work, add a .g-img class to any
+image in question. */
+img.g-img   div {
+display:none !important;
+}
+/* What it does: Prevents underlining the button text in
+Windows 10 */
+a,
+a:link,
+a:visited {
+color: #0c475c;
+text-decoration: none !important;
+}
+.header a {
+color: ;
+text-decoration: none;
+text-underline: none;
+}
+.main a {
+color: #0c475c;
+text-decoration: none;
+text-underline: none;
+word-wrap: break-word;
+}
+.main .section.customer_and_shipping_address a,
+.main .section.shipping_address_and_fulfillment_details a
+{
+color: #0c475c;
+text-decoration: none;
+text-underline: none;
+word-wrap: break-word;
+}
+.footer a {
+color: #0c475c;
+text-transform: none;
+text-decoration: none;
+text-underline: none;
+}
+
+/* What it does: Overrides styles added images. */
+img {
+border: none !important;
+outline: none !important;
+text-decoration:none !important;
+}
+
+a {text-decoration: none;}
+
+li {
+text-indent: -1em; /* Normalise space between
+bullets and text */
+}
+
+/* Section specific premailer ignores */
+td.menu_bar_1 a:hover,
+td.menu_bar_6 a:hover {
+color: #0c475c !important;
+}
+th.related_product_wrapper.first {
+border-right: 10px solid #fcf7f3;
+}
+th.related_product_wrapper.last {
+border-left: 10px solid #fcf7f3;
+}
+
+/* What it does: Fixes fonts for Google WebFonts; */
+[style*=3D"Verdana"] {
+font-family:
+'Verdana',-apple-system,BlinkMacSystemFont,'Segoe
+UI',Arial,sans-serif !important;
+}
+[style*=3D"Verdana"] {
+font-family:
+'Verdana',-apple-system,BlinkMacSystemFont,'Segoe
+UI',Arial,sans-serif !important;
+}
+[style*=3D"Verdana"] {
+font-family:
+'Verdana',-apple-system,BlinkMacSystemFont,'Segoe
+UI',Arial,sans-serif !important;
+}
+[style*=3D"Verdana"] {
+font-family:
+'Verdana',-apple-system,BlinkMacSystemFont,'Segoe
+UI',Arial,sans-serif !important;
+}
+*
+
+@media only screen and (max-width:480px) {
+th.column_logo {
+text-align: center;
+display: block !important;
+}
+.logo-mobile-left {
+Margin: 0 auto 0 0 !important;
+}
+.logo-mobile-right {
+Margin: 0 0 0 auto !important;
+}
+.logo-mobile-center {
+Margin: 0 auto !important;
+}
+}
+
+/* Media Queries */
+/* What it does: Removes right gutter in Gmail iOS
+app */
+@media only screen and (min-device-width: 375px) and
+(max-device-width: 413px) {
+/* iPhone 6 and 6  */
+.container {
+min-width: 375px !important;
+}
+}
+/* Main media query for responsive styles */
+@media only screen and (max-width:480px) {
+/* What it does: Overrides email-container's desktop
+width and forces it into a 100% fluid width. */
+.email-container {
+width: 100% !important;
+min-width: 100% !important;
+}
+/* What it does: Sets more reasonable mobile line
+heights */
+h1, h2, h3 {
+line-height: 1.4 !important;
+}
+
+/* What it does: Forces images to resize to the width
+of their container. */
+img.fluid,
+img.fluid-centered {
+width: 100% !important;
+min-width: 100% !important;
+max-width: 100% !important;
+height: auto !important;
+Margin: auto !important;
+box-sizing: border-box;
+}
+/* and center justify these ones. */
+img.fluid-centered {
+Margin: auto !important;
+}
+
+/* What it does: Forces table cells into full-width
+rows. */
+th.stack-column,
+th.stack-column-left,
+th.stack-column-center,
+th.related_product_wrapper,
+.column_1_of_2,
+.column_2_of_2 {
+display: block !important;
+width: 100% !important;
+min-width: 100% !important;
+direction: ltr !important;
+box-sizing: border-box;
+}
+/* and left justify these ones. */
+th.stack-column-left {
+text-align: left !important;
+}
+/* and center justify these ones. */
+th.stack-column-center,
+th.related_product_wrapper {
+text-align: center !important;
+border-right: none !important;
+border-left: none !important;
+}
+.column_button,
+.column_button > table,
+.column_button > table th {
+width: 100% !important;
+text-align: center !important;
+Margin: 0 !important;
+}
+.column_1_of_2 {
+padding-bottom: 20px !important;
+}
+.column_1_of_2 th {
+padding-right: 0 !important;
+}
+.column_2_of_2 th {
+padding-left:  0 !important;
+}
+.column_text_after_button {
+padding: 0 10px !important;
+}
+/* Padding */
+.section_border {
+padding-right: 10px !important;
+padding-left: 10px !important;
+}
+.section_content {
+padding-right: 20px !important;
+padding-left: 20px !important;
+}
+.recommended_products .section_content
+.related_products_title {
+padding-right: 20px !important;
+padding-left: 20px !important;
+}
+.recommended_products .section_content {
+padding-right: 0 !important;
+padding-left: 0 !important;
+}
+
+/* Adjust product images */
+img.product-image,
+img.related_product_image {
+width: 160px !important;
+max-width: 160px !important;
+}
+/* Text align adjustments */
+.column_1_of_2 th p,
+.column_2_of_2 th p,
+.order_notes * {
+text-align: center !important;
+}
+.column_text_after_button {
+text-align: center !important;
+}
+.column_text_after_button * {
+text-align: center !important;
+}
+.line-item-description p {
+text-align: left !important;
+}
+.line-item-price p,
+.line-item-qty p,
+.line-item-line-price p {
+text-align: right !important;
+}
+h2, h3,
+.column_1_of_2 th,
+.column_2_of_2 th {
+text-align: center !important;
+}
+td.order-table-title {
+text-align: center !important;
+}
+/* Padding adjustments */
+tr.row-border-bottom th.product-image-wrapper {
+border-bottom: none !important;
+}
+th.related_product_wrapper.first,
+th.related_product_wrapper.last {
+padding-right: 0 !important;
+padding-left: 0 !important;
+}
+.text_banner th.banner_container {
+padding: 10px !important;
+}
+.mobile_app_download .column_1_of_2 .image_container
+{
+padding-bottom: 0 !important;
+}
+.mobile_app_download .column_2_of_2 .image_container
+{
+padding-top: 0 !important;
+}
+.image_with_text th.column_1_of_2 {
+padding: 20px !important;
+padding-bottom: 10px !important;
+}
+.image_with_text th.column_2_of_2 {
+padding: 20px !important;
+padding-top: 10px !important;
+}
+.images_in_2_columns th.column_1_of_2 {
+padding: 0 !important;
+padding-bottom: 10px !important;
+}
+.images_in_2_columns th.column_2_of_2 {
+padding: 0 !important;
+padding-top: 10px !important;
+}
+}
+
+/* Custom Media Queries */
+@media only screen and (max-width:480px) {
+p,
+.column_1_of_2 th p,
+.column_2_of_2 th p,
+.order_notes * {
+text-align: center !important;
+}
+.line-item-price p,
+.line-item-qty p,
+.line-item-line-price p {
+text-align: right !important;
+}
+h1, h2, h3,
+.column_1_of_2 th,
+.column_2_of_2 th {
+text-align: center !important;
+}
+td.order-table-title {
+text-align: center !important;
+}
+}
+
+Ready to get compliments? Your order is confirmed and our
+team is getting it ready for you. We shall update you once it has
+been packed and shipped. Typically, it takes 4-10 days for the
+order to reach you.
+
+=CD=8F=E2=80=8C =CD=8F=E2=80=8C =CD=8F=E2=80=8C =CD=8F=E2=80=8C =CD=8F=E2=
+=80=8C =CD=8F=E2=80=8C =CD=8F=E2=80=8C =CD=8F=E2=80=8C =CD=8F=E2=80=8C =CD=
+=8F=E2=80=8C =CD=8F=E2=80=8C =CD=8F=E2=80=8C =CD=8F=E2=80=8C =CD=8F=E2=80=
+=8C =CD=8F=E2=80=8C =CD=8F=E2=80=8C =CD=8F=E2=80=8C =CD=8F=E2=80=8C =CD=8F=
+=E2=80=8C =CD=8F=E2=80=8C =CD=8F=E2=80=8C =CD=8F=E2=80=8C =CD=8F=E2=80=8C =
+=CD=8F=E2=80=8C =CD=8F=E2=80=8C =CD=8F=E2=80=8C
+
+
+( https://zouk.co.in?syclid=3D116dfa05-fd3a-44ac-b9a4-58894c2f3b13&utm_camp=
+aign=3Dorder-confirmation-email&utm_content=3Dlogo&utm_medium=3Demail&utm_s=
+ource=3DOrderlyEmails )
+
+
+*******
+Invoice
+*******
+
+--------------
+Order #1213608
+--------------
+
+04/02/2025
+
+---------------------------------
+Thank You for shopping with Zouk!
+---------------------------------
+
+Hi
+
+Tamilarasan,
+
+Ready to get
+compliments? Your order is confirmed and our team is getting it
+ready for you. We shall update you once it has been packed and
+shipped. Typically, it takes 4-10 days for the order to reach
+you.
+
+Items ordered
+-------------
+
+Bidri Kaiser Chain Wallet=20
+( https://zouk.co.in/products/bidri-kaiser-chain-wallet?syclid=3Dc4dd9997-e=
+17f-498a-ae0c-0b32d8195440&utm_campaign=3Dorder-confirmation-email&utm_cont=
+ent=3Dproduct&utm_medium=3Demail&utm_source=3DOrderlyEmails )
+
+
+Bidri Kaiser Chain Wallet=20
+( https://zouk.co.in/products/bidri-kaiser-chain-wallet?syclid=3Db00e3b8c-a=
+10b-4611-b5db-b6bd97e00c35&utm_campaign=3Dorder-confirmation-email&utm_cont=
+ent=3Dproduct&utm_medium=3Demail&utm_source=3DOrderlyEmails )
+
+
+x 1
+
+=E2=82=B9 999.00
+
+FloMotif Harmony Sling Bag=20
+( https://zouk.co.in/products/flomotif-harmony-sling-bag?syclid=3D6d09240b-=
+022b-4199-94c5-c0dd666f1088&utm_campaign=3Dorder-confirmation-email&utm_con=
+tent=3Dproduct&utm_medium=3Demail&utm_source=3DOrderlyEmails )
+
+
+FloMotif Harmony Sling Bag=20
+( https://zouk.co.in/products/flomotif-harmony-sling-bag?syclid=3Da184e296-=
+3d00-4f1f-a75a-ebe806318e34&utm_campaign=3Dorder-confirmation-email&utm_con=
+tent=3Dproduct&utm_medium=3Demail&utm_source=3DOrderlyEmails )
+
+
+Add on: Personalised Tag (Exclusive), Initial-TK
+
+x 1
+
+=E2=82=B9 1,399.00
+
+Personalised Tag (Exclusive)=20
+( https://zouk.co.in/products/exclusive-tag?syclid=3D69d27224-6bec-47d7-a1a=
+c-e8500d02af99&utm_campaign=3Dorder-confirmation-email&utm_content=3Dproduc=
+t&utm_medium=3Demail&utm_source=3DOrderlyEmails )
+
+
+Personalised Tag (Exclusive)=20
+( https://zouk.co.in/products/exclusive-tag?syclid=3D80a30947-fb3a-4ee8-8b1=
+2-de3d1d8d11a9&utm_campaign=3Dorder-confirmation-email&utm_content=3Dproduc=
+t&utm_medium=3Demail&utm_source=3DOrderlyEmails )
+
+
+Initial: TK
+
+Ordered for: FloMotif Harmony Sling Bag
+
+x 1
+
+=E2=82=B9 150.00
+
+Discount (B1G1)
+
+-=E2=82=B9 999.00
+
+Subtotal
+=E2=82=B9
+1,549.00
+
+Total excl. GST
+=E2=82=B9
+1,383.04
+
+GST
+
+=E2=82=B9 165.96
+
+Total
+=E2=82=B9
+1,549.00
+
+Payment Info
+------------
+
+Shopflo Icon
+
+Shopflo
+
+=E2=82=B9
+1,549.00
+
+Shipping Address
+----------------
+
+TamilarasanS2, Vignesham Appartments, Silapathigaram street,
+Sirinivasa Nagar, perungalathurChennai 600063 TNIndiaTel.
++917373446804
+
+Customer
+--------
+
+TamilarasanS2, Vignesham Appartments, Silapathigaram street,
+Sirinivasa Nagar, perungalathurChennai 600063 TNIndiaTel.
++917373446804ptsntamil@gmail.com
+
+Order Notes
+-----------
+
+You can follow the status of your order by clicking the button
+below:
+
+View Order Status >=20
+( https://zouk.co.in/21865207/orders/b628d8149266485b4500d690d6548397/authe=
+nticate?key=3D5ef28c9be4b71005745ba80b7cd4ddd2&syclid=3Df393206e-f78c-43ff-=
+b11c-1042c9167d84 )
+
+
+Please read our Refunds and Exchange policy=20
+( https://zouk.co.in/pages/refund-policy?syclid=3Dc8859f68-7913-489f-9100-f=
+76819bb0c65 )
+ carefully. If you have any questions, reply to this email or
+contact us at online@zouk.co.in
+
+Disclaimer: Any representative of Zouk will never ask for money
+in exchange for providing deals/offers/products from you. Beware
+of any such scams and report such activities through our official
+email id - online@zouk.co.in.
+
+Billed & Shipped By
+GSTIN : 27AAXCS2385L1ZE
+
+SEA TURTLE PRIVATE LIMITED
+BLDG NO K6 AND K7 GALA NO 1 TO 13, FLOOR NO 1, SHREE ARIHANT
+COMPOUND, RETI BUNDER ROAD, KOPAR
+THANE 421302 MAHARASHTRA.
+
+Facebook ( https://www.facebook.com/zoukonline )
+Twitter ( https://twitter.com/zoukbrand )
+Instagram ( https://www.instagram.com/zoukonline/ )
+Pinterest ( https://in.pinterest.com/zoukonline/ )
+YouTube=20
+( https://www.youtube.com/channel/UCAZeugt1M29zzQURXqvPLeQ )
+LinkedIn ( https://www.linkedin.com/company/zouk )
+
+online@zouk.co.in
+
+www.zouk.co.in
+
+Copyright =C2=A9 2025
+--c769bd372ce9725b8d5b3b2ff2de4d9c180aea10cc3701259816afd75cd7
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w=
+3.org/TR/REC-html40/loose.dtd"><html><head></head><body>
+
+ =20
+    <!--[if gte mso 15]>
+      <xml>
+        <o:OfficeDocumentSettings> <o:AllowPNG />
+            <o:PixelsPerInch>96</o:PixelsPerInch> </o:OfficeDocumentSetting=
+s>
+        </xml>
+    <![endif]-->
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width"/>
+    <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"/>
+    <meta name=3D"x-apple-disable-message-reformatting"/>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUS-AS=
+CII"/>
+    <meta name=3D"color-scheme" content=3D"light"/>
+    <meta name=3D"supported-color-schemes" content=3D"light only"/>
+    <!-- Order confirmation email -->
+    <style type=3D"text/css" data-premailer=3D"ignore">
+      /* What it does: Remove spaces around the email design added by some =
+email clients. */
+        /* Beware: It can remove the padding / Margin and add a background =
+color to the compose a reply window. */
+        html, body {
+          Margin: 0 auto !important;
+          padding: 0 !important;
+          width: 100% !important;
+        }
+        /* What it does: Stops email clients resizing small text. */
+        * {
+          -ms-text-size-adjust: 100%;
+          -webkit-text-size-adjust: 100%;
+          text-rendering: optimizeLegibility;
+        }
+        /* What it does: Forces Outlook.com to display emails full width. *=
+/
+        .ExternalClass {
+          width: 100%;
+        }
+        /* What is does: Centers email on Android 4.4 */
+        div[style*=3D"Margin: 16px 0"] {
+            Margin:0 !important;
+        }
+        /* What it does: Stops Outlook from adding extra spacing to tables.=
+ */
+        table,
+        th {
+          mso-table-lspace: 0pt;
+          mso-table-rspace: 0pt;
+        }
+        /* What it does: Fixes Outlook.com line height. */
+        .ExternalClass,
+        .ExternalClass * {
+          line-height: 100% !important;
+        }
+        /* What it does: Fixes webkit padding issue. Fix for Yahoo mail tab=
+le alignment bug. Applies table-layout to the first 2 tables then removes f=
+or anything nested deeper. */
+        table {
+          border-spacing: 0 !important;
+          border-collapse: collapse !important;
+          border: none;
+          Margin: 0 auto;
+          direction: ltr;
+        }
+        div[style*=3D"Margin: 16px 0"] {
+            Margin:0 !important;
+        }
+        /* What it does: Uses a better rendering method when resizing image=
+s in IE. */
+        img {
+          -ms-interpolation-mode:bicubic;
+        }
+        /* What it does: Overrides styles added when Yahoo's auto-senses a =
+link. */
+        .yshortcuts a {
+          border-bottom: none !important;
+        }
+        /* What it does: Overrides blue, underlined link auto-detected by i=
+OS Mail. */
+        /* Create a class for every link style needed; this template needs =
+only one for the link in the footer. */
+        /* What it does: A work-around for email clients meddling in trigge=
+red links. */
+        *[x-apple-data-detectors],  /* iOS */
+        .x-gmail-data-detectors,    /* Gmail */
+        .x-gmail-data-detectors *,
+        .aBn {
+            border-bottom: none !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+        /* What it does: Overrides blue, underlined link auto-detected by G=
+mail. */
+        u   #body a {
+            color: inherit;
+            text-decoration: none;
+            font-size: inherit;
+            font-family: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+        }
+     =20
+        /* What it does: Prevents Gmail from displaying an download button =
+on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+        /* If the above doesn't work, add a .g-img class to any image in qu=
+estion. */
+        img.g-img   div {
+            display:none !important;
+        }
+        /* What it does: Prevents underlining the button text in Windows 10=
+ */
+        a,
+        a:link,
+        a:visited {
+            color: #0c475c;
+            text-decoration: none !important;
+        }
+        .header a {
+            color: ;
+            text-decoration: none;
+            text-underline: none;
+        }
+        .main a {
+            color: #0c475c;
+            text-decoration: none;
+            text-underline: none;
+            word-wrap: break-word;
+        }
+        .main .section.customer_and_shipping_address a,
+        .main .section.shipping_address_and_fulfillment_details a {
+            color: #0c475c;
+            text-decoration: none;
+            text-underline: none;
+            word-wrap: break-word;
+        }
+        .footer a {
+            color: #0c475c;
+            text-transform: none;
+            text-decoration: none;
+            text-underline: none;
+        }
+     =20
+        /* What it does: Overrides styles added images. */
+        img {
+          border: none !important;
+          outline: none !important;
+          text-decoration:none !important;
+        }
+    </style>
+    <!--[if (mso)|(mso 16)]>
+      <style type=3D"text/css" data-premailer=3D"ignore">
+        a {text-decoration: none;}
+      </style>
+    <![endif]-->
+    <!--[if gte mso 9]>
+      <style>
+        li {
+              text-indent: -1em; /* Normalise space between bullets and tex=
+t */
+            }
+      </style>
+    <![endif]-->
+    <style type=3D"text/css" data-premailer=3D"ignore">
+      /* Section specific premailer ignores */
+        td.menu_bar_1 a:hover,
+        td.menu_bar_6 a:hover {
+          color: #0c475c !important;
+        }
+        th.related_product_wrapper.first {
+          border-right: 10px solid #fcf7f3;
+        }
+        th.related_product_wrapper.last {
+          border-left: 10px solid #fcf7f3;
+        }
+    </style>
+    <!--[if !mso]><!-->
+  <style type=3D"text/css" data-premailer=3D"ignore">
+  /* What it does: Fixes fonts for Google WebFonts; */
+  [style*=3D"Verdana"] {
+      font-family: 'Verdana',-apple-system,BlinkMacSystemFont,'Segoe UI',Ar=
+ial,sans-serif !important;
+  }
+  [style*=3D"Verdana"] {
+      font-family: 'Verdana',-apple-system,BlinkMacSystemFont,'Segoe UI',Ar=
+ial,sans-serif !important;
+  }
+  [style*=3D"Verdana"] {
+      font-family: 'Verdana',-apple-system,BlinkMacSystemFont,'Segoe UI',Ar=
+ial,sans-serif !important;
+  }
+  [style*=3D"Verdana"] {
+      font-family: 'Verdana',-apple-system,BlinkMacSystemFont,'Segoe UI',Ar=
+ial,sans-serif !important;
+  }
+  </style>
+  <link href=3D"https://fonts.googleapis.com/css?family=3D&amp;subset=3Dlat=
+in-ext" rel=3D"stylesheet" type=3D"text/css" data-premailer=3D"ignore"/>
+<!--<![endif]-->
+      <style type=3D"text/css" data-premailer=3D"ignore">
+        @media only screen and (max-width:480px) {
+                th.column_logo {
+                  text-align: center;
+                  display: block !important;
+                }
+                .logo-mobile-left {
+                    Margin: 0 auto 0 0 !important;
+                }
+                .logo-mobile-right {
+                    Margin: 0 0 0 auto !important;
+                }
+                .logo-mobile-center {
+                    Margin: 0 auto !important;
+                }
+              }
+      </style>
+      <style type=3D"text/css" data-premailer=3D"ignore">
+        /* Media Queries */
+            /* What it does: Removes right gutter in Gmail iOS app */
+            @media only screen and (min-device-width: 375px) and (max-devic=
+e-width: 413px) {
+                /* iPhone 6 and 6  */
+                .container {
+                    min-width: 375px !important;
+                }
+            }
+          /* Main media query for responsive styles */
+          @media only screen and (max-width:480px) {
+            /* What it does: Overrides email-container's desktop width and =
+forces it into a 100% fluid width. */
+            .email-container {
+              width: 100% !important;
+              min-width: 100% !important;
+            }
+            /* What it does: Sets more reasonable mobile line heights */
+            h1, h2, h3 {
+              line-height: 1.4 !important;
+            }
+       =20
+            /* What it does: Forces images to resize to the width of their =
+container. */
+            img.fluid,
+            img.fluid-centered {
+              width: 100% !important;
+              min-width: 100% !important;
+              max-width: 100% !important;
+              height: auto !important;
+              Margin: auto !important;
+              box-sizing: border-box;
+            }
+            /* and center justify these ones. */
+            img.fluid-centered {
+              Margin: auto !important;
+            }
+       =20
+            /* What it does: Forces table cells into full-width rows. */
+            th.stack-column,
+            th.stack-column-left,
+            th.stack-column-center,
+            th.related_product_wrapper,
+            .column_1_of_2,
+            .column_2_of_2 {
+              display: block !important;
+              width: 100% !important;
+              min-width: 100% !important;
+              direction: ltr !important;
+              box-sizing: border-box;
+            }
+            /* and left justify these ones. */
+            th.stack-column-left {
+              text-align: left !important;
+            }
+            /* and center justify these ones. */
+            th.stack-column-center,
+            th.related_product_wrapper {
+              text-align: center !important;
+              border-right: none !important;
+              border-left: none !important;
+            }
+            .column_button,
+            .column_button > table,
+            .column_button > table th {
+              width: 100% !important;
+              text-align: center !important;
+              Margin: 0 !important;
+            }
+            .column_1_of_2 {
+              padding-bottom: 20px !important;
+            }
+            .column_1_of_2 th {
+                padding-right: 0 !important;
+            }
+            .column_2_of_2 th {
+                padding-left:  0 !important;
+            }
+            .column_text_after_button {
+              padding: 0 10px !important;
+            }
+            /* Padding */
+            .section_border {
+              padding-right: 10px !important;
+              padding-left: 10px !important;
+            }
+            .section_content {
+              padding-right: 20px !important;
+              padding-left: 20px !important;
+            }
+            .recommended_products .section_content .related_products_title =
+{
+              padding-right: 20px !important;
+              padding-left: 20px !important;
+            }
+            .recommended_products .section_content {
+              padding-right: 0 !important;
+              padding-left: 0 !important;
+            }
+       =20
+            /* Adjust product images */
+            img.product-image,
+            img.related_product_image {
+                  width: 160px !important;
+                  max-width: 160px !important;
+            }
+            /* Text align adjustments */
+            .column_1_of_2 th p,
+            .column_2_of_2 th p,
+            .order_notes * {
+                text-align: center !important;
+            }
+            .column_text_after_button {
+              text-align: center !important;
+            }
+            .column_text_after_button * {
+              text-align: center !important;
+            }
+            .line-item-description p {
+                text-align: left !important;
+            }
+            .line-item-price p,
+            .line-item-qty p,
+            .line-item-line-price p {
+              text-align: right !important;
+            }
+            h2, h3,
+            .column_1_of_2 th,
+            .column_2_of_2 th {
+              text-align: center !important;
+            }
+            td.order-table-title {
+              text-align: center !important;
+            }
+            /* Padding adjustments */
+            tr.row-border-bottom th.product-image-wrapper {
+              border-bottom: none !important;
+            }
+            th.related_product_wrapper.first,
+            th.related_product_wrapper.last {
+              padding-right: 0 !important;
+              padding-left: 0 !important;
+            }
+            .text_banner th.banner_container {
+              padding: 10px !important;
+            }
+            .mobile_app_download .column_1_of_2 .image_container {
+              padding-bottom: 0 !important;
+            }
+            .mobile_app_download .column_2_of_2 .image_container {
+              padding-top: 0 !important;
+            }
+            .image_with_text th.column_1_of_2 {
+              padding: 20px !important;
+              padding-bottom: 10px !important;
+            }
+            .image_with_text th.column_2_of_2 {
+              padding: 20px !important;
+              padding-top: 10px !important;
+            }
+            .images_in_2_columns th.column_1_of_2 {
+              padding: 0 !important;
+              padding-bottom: 10px !important;
+            }
+            .images_in_2_columns th.column_2_of_2 {
+              padding: 0 !important;
+              padding-top: 10px !important;
+            }
+          }
+      </style>
+      <style type=3D"text/css" data-premailer=3D"ignore">
+        /* Custom Media Queries */
+          @media only screen and (max-width:480px) {
+            p,
+            .column_1_of_2 th p,
+            .column_2_of_2 th p,
+            .order_notes * {
+                text-align: center !important;
+            }
+            .line-item-price p,
+            .line-item-qty p,
+            .line-item-line-price p {
+              text-align: right !important;
+            }
+            h1, h2, h3,
+            .column_1_of_2 th,
+            .column_2_of_2 th {
+                text-align: center !important;
+            }
+            td.order-table-title {
+              text-align: center !important;
+            }
+          }
+      </style>
+   =20
+   =20
+      <!--[if !mso 9]><!-->
+        <div style=3D"display: none; overflow: hidden; line-height: 1px; ma=
+x-height: 0px; max-width: 0px; opacity: 0; mso-hide: all;">Ready to get com=
+pliments? Your order is confirmed and our team is getting it ready for you.=
+ We shall update you once it has been packed and shipped. Typically, it tak=
+es 4-10 days for the order to reach you.
+        </div>
+        <div id=3D"custom-preview-text" style=3D"display: none; overflow: h=
+idden; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; mso-h=
+ide: all;">=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=80=8C=C2=A0=
+=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=80=
+=8C=C2=A0=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=80=8C=C2=A0=CD=
+=8F=E2=80=8C=C2=A0=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=80=8C=
+=C2=A0=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=80=8C=C2=A0=CD=8F=
+=E2=80=8C=C2=A0=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=80=8C=C2=
+=A0=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=80=8C=C2=A0=CD=8F=E2=
+=80=8C=C2=A0=CD=8F=E2=80=8C=C2=A0</div>
+        <!--<![endif]-->
+       =20
+         =20
+            <!-- CM COMMERCE -->
+            <!-- BEGIN: CONTAINER -->
+            <table class=3D"container container_full" cellpadding=3D"0" cel=
+lspacing=3D"0" border=3D"0" width=3D"100%" style=3D"border-collapse: collap=
+se; min-width: 100%; direction: ltr;" role=3D"presentation" bgcolor=3D"#ede=
+6df">
+              <tbody>
+                <tr>
+                  <th valign=3D"top" style=3D"mso-line-height-rule: exactly=
+;">
+                    <center style=3D"width: 100%;">
+                      <table border=3D"0" width=3D"640" cellpadding=3D"0" c=
+ellspacing=3D"0" align=3D"center" style=3D"width: 640px; min-width: 640px; =
+max-width: 640px; direction: ltr; margin: auto;" class=3D"email-container" =
+role=3D"presentation">
+                        <tbody>
+                          <tr>
+                            <th valign=3D"top" class=3D"container_border" s=
+tyle=3D"mso-line-height-rule: exactly; padding: 10px 0;">
+                              <!-- BEGIN : SECTION : HEADER -->
+                              <table class=3D"sections_container header" da=
+ta-id=3D"header" id=3D"section-header" border=3D"0" width=3D"100%" cellpadd=
+ing=3D"0" cellspacing=3D"0" align=3D"center" style=3D"min-width: 100%; dire=
+ction: ltr;" role=3D"presentation" bgcolor=3D"#fcf7f3">
+                                <tbody><tr>
+                                  <td class=3D"" style=3D"mso-line-height-r=
+ule: exactly;" bgcolor=3D"#fcf7f3">
+                                    <table border=3D"0" width=3D"100%" cell=
+padding=3D"0" cellspacing=3D"0" align=3D"center" style=3D"min-width: 100%; =
+direction: ltr;" role=3D"presentation">
+                                      <tbody><tr>
+                                        <th class=3D"section_border" style=
+=3D"mso-line-height-rule: exactly; padding: 20px 80px;" bgcolor=3D"#fcf7f3"=
+>
+                                          <table border=3D"0" width=3D"100%=
+" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" style=3D"min-width: =
+100%; direction: ltr;" role=3D"presentation">
+                                            <tbody><tr>
+                                              <th class=3D"column_logo sect=
+ion_content" style=3D"mso-line-height-rule: exactly; padding: 5px 20px;" al=
+ign=3D"center" bgcolor=3D"#fcf7f3">
+                                                <!-- Logo : BEGIN -->
+                                                <a data-container-width=3D"=
+185 640" href=3D"https://zouk.co.in/_t/c/A1030004-1820FDEC03E96530-132FA8A4=
+?l=3DAACueJ1lKG578%2FZ1mAi4QPQqr6ZdmquXHkInSkG4eyhbnVTkNE5EbMe10ocwZ5nx%2FB=
+6nXWG66wfQCvfzvnFox7mTXOfgSiiAz2l1tLTQI%2BvxkgHYMDs%2BcfqSpWaaKNws9NyJDAAIz=
+5qgoVpfCNIiamnYwJDNINU4yINm28GoaIRPCwNVkLA3vwBEDwsaeV0oluD2OxQXJhb08zkMnNAK=
+U64l4PHB1BM%2F%2FvbwV%2BwUxG7ifNiaZK0MW4%2FZNiDquMNYGR%2BCu%2BCU6JDHRW3leFZ=
+%2BhO5Tw25RDHifT24mOw8rKoheaFgtfQFSkKfswd1vAwKDfjLUsIq5hU1803Tt%2FICctogJvL=
+lTKFN7naUKFea5VY2Zjg%3D%3D&amp;c=3DAAC6Q17Q%2BqbNsQbdJqI6BmxFA0NRz828sBLfYJ=
+L%2FKz1PaZNRBmUhpI3dTkTTU7sY2oMs%2Fx0qaIQwWKGcy%2F8MYVuSr4fJ7eoEnApVLamRagl=
+rBVv7Hvr4PeqR5aov%2BI8Es%2BtNuCc3xjrbm8XWwRSOSeVFddPnFw0wVg763ymuwpt5awUx4m=
+3%2BHylBOV2V4JpHpE61zwfEVIliuHtWha9X9rfnudN%2BxDstubKa39h%2FCquCJF52Ovu41z1=
+gMBejMlQYObjJW4%2BeYsfQ4lPizx9I%2B%2BF3VBWrC1mmF1l2dF0mJFPdZX5OXGg9WxSCCCIV=
+Zyzl%2BzUslrj3WNv8SkljZJ4iJmHu9kt1bisBuyuwBZvqPdfxgL%2BTs9rlqR%2FyMkvWmZitX=
+xuK6v88bAmQjam1N7qpz3%2BIL%2B8NlR4B55nNXHOVj%2B0tg%2FNcKoGuE5Xfef0fCcgtWwci=
+u2vIBD8c8H3pog%3D%3D" target=3D"_blank" style=3D"text-decoration: none !imp=
+ortant; text-underline: none;">
+                                                  <img src=3D"https://cdn.f=
+ilestackcontent.com/api/file/oFhHYRedSgiSVp1YeR1g/convert?fit=3Dmax&amp;w=
+=3D185" class=3D"logo logo-center logo-mobile-center " width=3D"92" border=
+=3D"0" style=3D"width: 92px; height: auto !important; display: block; margi=
+n: 0 auto;"/>
+                                                </a>
+                                                <!-- Logo : END -->
+                                              </th>
+                                            </tr>
+                                          </tbody></table>
+                                        </th>
+                                      </tr>
+                                    </tbody></table>
+                                  </td>
+                                </tr>
+                              </tbody></table>
+                              <!-- END : SECTION : HEADER -->
+                              <!-- BEGIN : SECTION : MAIN -->
+                              <table class=3D"sections_container main" data=
+-id=3D"main" id=3D"section-main" border=3D"0" width=3D"100%" cellpadding=3D=
+"0" cellspacing=3D"0" align=3D"center" style=3D"min-width: 100%; direction:=
+ ltr;" role=3D"presentation" bgcolor=3D"#fcf7f3">
+                                <tbody><tr>
+                                  <td class=3D"" style=3D"mso-line-height-r=
+ule: exactly;" bgcolor=3D"#fcf7f3">
+                                    <table border=3D"0" width=3D"100%" cell=
+padding=3D"0" cellspacing=3D"0" align=3D"center" style=3D"min-width: 100%; =
+direction: ltr;" id=3D"mixContainer" role=3D"presentation">
+                                      <!-- BEGIN SECTION: Heading -->
+                                      <tbody><tr id=3D"section-16030663" cl=
+ass=3D"section heading">
+                                        <th class=3D"section_border" style=
+=3D"mso-line-height-rule: exactly; padding: 0 80px;" bgcolor=3D"#fcf7f3">
+                                          <table border=3D"0" width=3D"100%=
+" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" style=3D"min-width: =
+100%; direction: ltr;" role=3D"presentation">
+                                            <tbody><tr>
+                                              <th class=3D"section_content"=
+ style=3D"mso-line-height-rule: exactly; border-top-left-radius: 0px; borde=
+r-top-right-radius: 0px; color: #0c475c; padding: 20px; border-color: #fcf7=
+f3;" bgcolor=3D"#fcf7f3" valign=3D"top">
+                                                <table cellspacing=3D"0" ce=
+llpadding=3D"0" border=3D"0" width=3D"100%" role=3D"presentation" style=3D"=
+direction: ltr; border-color: #fcf7f3;" bgcolor=3D"#fcf7f3">
+                                                  <tbody><tr style=3D"borde=
+r-color: #fcf7f3;" bgcolor=3D"#fcf7f3">
+                                                    <th style=3D"mso-line-h=
+eight-rule: exactly; border-color: #fcf7f3;" bgcolor=3D"#fcf7f3" valign=3D"=
+top">
+                                                      <h1 data-key=3D"16030=
+663_heading" style=3D"font-family: &#39;Verdana&#39;,-apple-system,BlinkMac=
+SystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 18px; line-heigh=
+t: 24px; font-weight: 700; color: #0c475c; text-transform: none; letter-spa=
+cing: 0.5px; background-color: #fcf7f3 !important; margin: 0; border-color:=
+ #fcf7f3;" align=3D"center">Invoice</h1>
+                                                    </th>
+                                                  </tr>
+                                                </tbody></table>
+                                              </th>
+                                            </tr>
+                                          </tbody></table>
+                                        </th>
+                                      </tr>
+                                      <!-- END SECTION: Heading -->
+                                      <!-- BEGIN SECTION: Order Number And =
+Date -->
+                                      <tr id=3D"section-16030664" class=3D"=
+section order_number_and_date">
+                                        <th class=3D"section_border" style=
+=3D"mso-line-height-rule: exactly; padding: 0 80px;" bgcolor=3D"#fcf7f3">
+                                          <table border=3D"0" width=3D"100%=
+" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" style=3D"min-width: =
+100%; direction: ltr;" role=3D"presentation">
+                                            <tbody><tr>
+                                              <th class=3D"section_content"=
+ style=3D"mso-line-height-rule: exactly; color: #0c475c; padding: 20px; bor=
+der-color: #fcf7f3;" bgcolor=3D"#fcf7f3" valign=3D"top">
+                                               =20
+                                                  <h2 style=3D"font-family:=
+ &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Aria=
+l,sans-serif; color: #0c475c; font-size: 16px; line-height: 20px; font-weig=
+ht: 700; text-transform: none; letter-spacing: 0.5px; background-color: #fc=
+f7f3 !important; margin: 0; border-color: #fcf7f3;" align=3D"center">
+                                                    <span data-key=3D"16030=
+664_order_number" style=3D"background-color: #fcf7f3 !important; border-col=
+or: #fcf7f3;">Order</span> #1213608
+                                                  </h2>
+                                                  <p class=3D"muted" style=
+=3D"mso-line-height-rule: exactly; direction: ltr; font-family: &#39;Verdan=
+a&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif=
+; font-size: 13px; line-height: 20px; font-weight: normal; text-transform: =
+none; color: #0c475c; background-color: #fcf7f3 !important; margin: 0; bord=
+er-color: #fcf7f3;" align=3D"center">04/02/2025</p>
+                                               =20
+                                              </th>
+                                            </tr>
+                                          </tbody></table>
+                                        </th>
+                                      </tr>
+                                      <!-- END SECTION: Order Number And Da=
+te -->
+                                      <!-- BEGIN SECTION: Divider -->
+                                      <tr id=3D"section-16035557" class=3D"=
+section divider">
+                                        <th class=3D"section_border" style=
+=3D"mso-line-height-rule: exactly; padding: 5px 80px;" bgcolor=3D"#fcf7f3">
+                                          <table border=3D"0" width=3D"100%=
+" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" style=3D"min-width: =
+100%; direction: ltr;" role=3D"presentation">
+                                            <tbody><tr>
+                                              <th class=3D"section_content"=
+ style=3D"mso-line-height-rule: exactly; padding: 15px 20px;" bgcolor=3D"#f=
+cf7f3" valign=3D"top">
+                                                <table cellspacing=3D"0" ce=
+llpadding=3D"0" border=3D"0" width=3D"100%" role=3D"presentation" style=3D"=
+direction: ltr;">
+                                                  <tbody><tr>
+                                                    <th style=3D"mso-line-h=
+eight-rule: exactly; border-top-width: 1px; border-top-color: #d3d3d3; bord=
+er-top-style: solid;" bgcolor=3D"#fcf7f3" valign=3D"top">
+                                                    </th>
+                                                  </tr>
+                                                </tbody></table>
+                                              </th>
+                                            </tr>
+                                          </tbody></table>
+                                        </th>
+                                      </tr>
+                                      <!-- END SECTION: Divider -->
+                                      <!-- BEGIN SECTION: Heading -->
+                                      <tr id=3D"section-16348693" class=3D"=
+section heading">
+                                        <th class=3D"section_border" style=
+=3D"mso-line-height-rule: exactly; padding: 0 80px;" bgcolor=3D"#fcf7f3">
+                                          <table border=3D"0" width=3D"100%=
+" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" style=3D"min-width: =
+100%; direction: ltr;" role=3D"presentation">
+                                            <tbody><tr>
+                                              <th class=3D"section_content"=
+ style=3D"mso-line-height-rule: exactly; border-top-left-radius: 0px; borde=
+r-top-right-radius: 0px; color: #0c475c; padding: 20px; border-color: #fcf7=
+f3;" bgcolor=3D"#fcf7f3" valign=3D"top">
+                                                <table cellspacing=3D"0" ce=
+llpadding=3D"0" border=3D"0" width=3D"100%" role=3D"presentation" style=3D"=
+direction: ltr; border-color: #fcf7f3;" bgcolor=3D"#fcf7f3">
+                                                  <tbody><tr style=3D"borde=
+r-color: #fcf7f3;" bgcolor=3D"#fcf7f3">
+                                                    <th style=3D"mso-line-h=
+eight-rule: exactly; border-color: #fcf7f3;" bgcolor=3D"#fcf7f3" valign=3D"=
+top">
+                                                      <h2 data-key=3D"16348=
+693_heading" style=3D"font-family: &#39;Verdana&#39;,-apple-system,BlinkMac=
+SystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; color: #cc664e; font-size: =
+16px; line-height: 20px; font-weight: 700; text-transform: none; letter-spa=
+cing: 0.5px; background-color: #fcf7f3 !important; margin: 0; border-color:=
+ #fcf7f3;" align=3D"center">Thank You for shopping with Zouk!</h2>
+                                                    </th>
+                                                  </tr>
+                                                </tbody></table>
+                                              </th>
+                                            </tr>
+                                          </tbody></table>
+                                        </th>
+                                      </tr>
+                                      <!-- END SECTION: Heading -->
+                                      <!-- BEGIN SECTION: Introduction -->
+                                      <tr id=3D"section-16030662" class=3D"=
+section introduction">
+                                        <th class=3D"section_border" style=
+=3D"mso-line-height-rule: exactly; padding: 0 80px;" bgcolor=3D"#fcf7f3">
+                                          <table border=3D"0" width=3D"100%=
+" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" style=3D"min-width: =
+100%; direction: ltr;" role=3D"presentation">
+                                            <tbody><tr>
+                                              <th class=3D"section_content"=
+ style=3D"mso-line-height-rule: exactly; padding: 20px; border-color: #fcf7=
+f3;" bgcolor=3D"#fcf7f3" valign=3D"top">
+                                               =20
+                                                  <p style=3D"mso-line-heig=
+ht-rule: exactly; direction: ltr; font-family: &#39;Verdana&#39;,-apple-sys=
+tem,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 15px=
+; line-height: 20px; font-weight: 400; text-transform: none; color: #0c475c=
+; background-color: #fcf7f3 !important; margin: 0; border-color: #fcf7f3;" =
+align=3D"center">
+                                                    <span data-key=3D"16030=
+662_greeting_text" style=3D"text-align: center; direction: ltr; font-family=
+: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Ari=
+al,sans-serif; font-size: 15px; line-height: 20px; font-weight: 400; text-t=
+ransform: none; color: #0c475c; background-color: #fcf7f3 !important; borde=
+r-color: #fcf7f3;">
+                                                      Hi
+                                                    </span>
+                                                    Tamilarasan,
+                                                  </p>
+                                               =20
+                                                <span data-key=3D"16030662_=
+introduction_text" class=3D"text" style=3D"text-align: center; direction: l=
+tr; font-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Se=
+goe UI&#39;,Arial,sans-serif; font-size: 15px; line-height: 20px; font-weig=
+ht: 400; text-transform: none; color: #0c475c; background-color: #fcf7f3 !i=
+mportant; border-color: #fcf7f3;">
+                                                  <p style=3D"mso-line-heig=
+ht-rule: exactly; direction: ltr; font-family: &#39;Verdana&#39;,-apple-sys=
+tem,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 15px=
+; line-height: 20px; font-weight: 400; text-transform: none; color: #0c475c=
+; background-color: #fcf7f3 !important; margin: 10px 0 0; border-color: #fc=
+f7f3;" align=3D"center"></p>
+                                                  <p style=3D"mso-line-heig=
+ht-rule: exactly; direction: ltr; font-family: &#39;Verdana&#39;,-apple-sys=
+tem,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 15px=
+; line-height: 20px; font-weight: 400; text-transform: none; color: #0c475c=
+; background-color: #fcf7f3 !important; margin: 10px 0 0; border-color: #fc=
+f7f3;" align=3D"center">Ready to get compliments? Your order is confirmed a=
+nd our team is getting it ready for you. We shall update you once it has be=
+en packed and shipped. Typically, it takes 4-10 days for the order to reach=
+ you.<br style=3D"background-color: #fcf7f3 !important; border-color: #fcf7=
+f3;"/>
+                                                  </p>
+                                                </span>
+                                              </th>
+                                            </tr>
+                                          </tbody></table>
+                                        </th>
+                                      </tr>
+                                      <!-- END SECTION: Introduction -->
+                                      <!-- BEGIN SECTION: Products With Pri=
+cing -->
+                                      <tr id=3D"section-16030665" class=3D"=
+section products_with_pricing">
+                                        <th class=3D"section_border" style=
+=3D"mso-line-height-rule: exactly; padding: 0 80px;" bgcolor=3D"#fcf7f3">
+                                          <table border=3D"0" width=3D"100%=
+" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" style=3D"min-width: =
+100%; direction: ltr;" role=3D"presentation">
+                                            <tbody><tr>
+                                             =20
+                                                <!-- Bold 1 -->
+                                               =20
+                                               =20
+                                                <!-- end Bold 1 -->
+                                                <th class=3D"section_conten=
+t" style=3D"mso-line-height-rule: exactly; padding: 20px; border-color: #ed=
+e6df;" bgcolor=3D"#ede6df" valign=3D"top">
+                                                  <table class=3D"table_inn=
+er" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%" style=
+=3D"min-width: 100%; direction: ltr; border-color: #ede6df;" role=3D"presen=
+tation" bgcolor=3D"#ede6df">
+                                                    <tbody><tr style=3D"bor=
+der-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                      <th class=3D"product_=
+table  table_content" style=3D"mso-line-height-rule: exactly; padding-top: =
+5px; padding-bottom: 5px; border-color: #ede6df;" bgcolor=3D"#ede6df" valig=
+n=3D"top">
+                                                        <table cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%" style=3D"min-width: 10=
+0%; direction: ltr; border-color: #ede6df;" role=3D"presentation" bgcolor=
+=3D"#ede6df">
+                                                          <tbody><tr style=
+=3D"border-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                            <th colspan=3D"=
+2" class=3D"table_main_title" style=3D"mso-line-height-rule: exactly; borde=
+r-color: #ede6df;" bgcolor=3D"#ede6df" valign=3D"top">
+                                                              <h3 data-key=
+=3D"16030665_item" style=3D"font-family: &#39;Verdana&#39;,-apple-system,Bl=
+inkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; color: #cc664e; font-=
+size: 14px; line-height: 20px; font-weight: 400; text-transform: none; bord=
+er-bottom-width: 1px; border-bottom-style: solid; padding-bottom: 5px; back=
+ground-color: #ede6df !important; margin: 0 0 10px; border-color: #ede6df;"=
+ align=3D"left">Items ordered</h3>
+                                                            </th>
+                                                          </tr>
+                                                         =20
+                                                           =20
+                                                              <!-- Bold 2 -=
+->
+                                                             =20
+                                                             =20
+                                                             =20
+                                                             =20
+                                                             =20
+                                                               =20
+                                                               =20
+                                                             =20
+                                                              <!-- end Bold=
+ 2 -->
+                                                              <tr class=3D"=
+row-border-bottom" style=3D"border-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                                <th class=
+=3D"table-stack product-image-wrapper stack-column-center" width=3D"1" styl=
+e=3D"mso-line-height-rule: exactly; border-bottom-width: 1px; border-bottom=
+-style: solid; padding-top: 10px; padding-bottom: 10px; padding-right: 10px=
+; border-color: #ede6df;" bgcolor=3D"#ede6df" valign=3D"middle"><a href=3D"=
+https://zouk.co.in/_t/c/A1030004-1820FDEC03E96530-132FA8A4?l=3DAACq%2BAA4ce=
+FP6wyEsXfJ1KjhLX9AFIbadQtTpeRI5wpSAx4jxV54kwzKdeRcGOgVfHFDgnxxP0vrPjYifBP4%=
+2FbQUe1rUbcTyLKBtUpXEeJ2Fbw5M1Q04CLbAqX5VFFctwd75LVeeOBtKB0Tv6S1YsJIl%2FE8J=
+qjs7SQOgE2qvfjWuGf4DYTt6H%2FJkUUZpCwXcLZcpaRLAe3ZTcy8YJ%2B73cXNssSNJ0IA5N06=
+3ZHwJSZpKxMdlKXlhY135eGJRFZCx3S3WtgJbErRQFbmQG78ZICm43BSX3Ay0wsl77ud6Xbjr8l=
+Ooc6u9e20RNz7aNqMZFwvhD%2BDiE80eNkNAHN0zIUJKgGPOfekeL3%2FgCrKJzq4mdObLHh2VG=
+QpT4xejqKAaMtV2j%2BvED7%2BnbnW%2BMEFdYS8k3LsTUwjQ&amp;c=3DAAAbtZj%2BFw1Wfae=
+D4NWha7QO1KEiVKAzH2k1nOpNWC6lMdyvuX2tbNwesOMuFBMY6ZVmARO7tLW8tRDQjJdvlFkjRF=
+0uDHD4l69GRe%2BoLTh2wICdu9mF8neGOmR3qw0z6El7iNQ9ZCiCyzWwttIbGHIYlXS4jpVsyRX=
+aN3UVIEb%2BOrsdsCkFzTdS3HJjHUbcpzl1AewISF9BmDEam%2BKXi1nvuFgPAfdBnHQe1fHwvs=
+I0iM5h8j8T7fm9rtkjwyqGOSF2DIEl2gUty1SDf7RvKiz3YeZjsKBqeshK9KbrLfos3jL5BguQy=
+Z5sKU1EiQtXEVxGDkyEfXJQYqgWXp1rfXIKgm3Yl89gM0CNDwTzUiediqiBeEJ2yPOpxJfAa9io=
+xzqANk7tIfWLwJUwabAPIqNCY0H8K1r5Fb%2Fc2jUUZEk4NOKiX6P1hz7s0VlK%2FnnCn1n58Si=
+uxqoyW%2Bh62w%3D%3D" class=3D"product_link" target=3D"_blank" style=3D"colo=
+r: #0c475c; text-decoration: none !important; text-underline: none; word-wr=
+ap: break-word;"><img width=3D"105" class=3D"product-image" src=3D"https://=
+cdn.shopify.com/s/files/1/2186/5207/files/stylised_12.jpg?v=3D1708671986&am=
+p;width=3D210" alt=3D"Bidri Kaiser Chain Wallet" style=3D"background-color:=
+ #ede6df !important; vertical-align: middle; text-align: center; width: 105=
+px; max-width: 105px; height: auto !important; border-radius: 0px; padding:=
+ 0px; border-color: #ede6df;"/></a></th>
+                                                                <th class=
+=3D"product-details-wrapper table-stack stack-column" style=3D"mso-line-hei=
+ght-rule: exactly; border-bottom-width: 1px; border-bottom-style: solid; pa=
+dding-top: 10px; padding-bottom: 10px; border-color: #ede6df;" bgcolor=3D"#=
+ede6df" valign=3D"middle">
+                                                                  <table ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%" style=3D"min-=
+width: 100%; direction: ltr; border-color: #ede6df;" role=3D"presentation" =
+bgcolor=3D"#ede6df">
+                                                                    <tbody>=
+<tr style=3D"border-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                                     =20
+                                                                      <th c=
+lass=3D"line-item-description" style=3D"mso-line-height-rule: exactly; dire=
+ction: ltr; font-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont=
+,&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 15px; line-height: 20px; f=
+ont-weight: 400; text-transform: none; color: #0c475c; padding: 10px 5px 10=
+px 0; border-color: #ede6df;" align=3D"left" bgcolor=3D"#ede6df" valign=3D"=
+top">
+                                                                        <p =
+style=3D"mso-line-height-rule: exactly; direction: ltr; font-family: &#39;V=
+erdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-=
+serif; font-size: 15px; line-height: 20px; font-weight: 400; text-transform=
+: none; color: #0c475c; background-color: #ede6df !important; margin: 0; bo=
+rder-color: #ede6df;" align=3D"left">
+                                                                          <=
+a href=3D"https://zouk.co.in/_t/c/A1030004-1820FDEC03E96530-132FA8A4?l=3DAA=
+Ck91FAwJ9%2FFNeU2DZ1XQXEmjRF90HvxN6B1R5%2F15BnIq%2Fgp%2FEowG1AFNgohFMj8I2XT=
+O7n4RUoGcitdD8LoeqPwsQo2iMZsLo0MQKWgT846VN5JnnrdjV7RbOJho3ESeJxiILOsUISiE1J=
+w%2BODV1SFuUsoJxUj4Cav5qaCo4mAtxQ9sQJPa03v%2F49E4oD2Q9VHuYfHiBNwWeRfAtmA7ci=
+JjbMr8wHmzI3HEjy%2BFcZae14uK11%2FCy%2F0owlz7GW5XNo8WNKJwJ05h%2BlAReHDtTYHHh=
+FSNiagEsgjtdcmJtYsm%2FD9LTo%2F1tpczaGdSH4T0%2Bf%2FIykUSMnKNeBjoY1Ht%2FyGm9C=
+yjsvbrR6p9NhP0OxXSCTkZhXmoxRYYZOgKiYk5jZTokUHmMexjHuffEs8%2FrB6FY3kTpdp&amp=
+;c=3DAADaC7YJv%2FkjVDcYa5pzEfwoqESLJRY3Uze3R1WjN10qHC44VoV7IW7pv0rDxDf2iLul=
+drqx6gGcAVZCTXJ7kvqls%2BW82%2BejcZS%2BkqzBlKa8a%2FFL5vuoN70VU%2F1srkM0lrBtF=
+zKuIixE5fIlvkYjIMQXo3RX7SqbbTAW1JRn43ccMj%2Fth8KvizwNvxdX0LZ5UyHOEKrFb%2FEw=
+bTOD3LbFm4lJLu4khpBJ%2BpG021Fn7tNgB4mRPmrMmRpsg6VXH8y4LvkScFpqmu2N9EimO%2Bm=
+EC6LdCfUQkLWvhYWiohQpHo%2FOHGjyH4YawXQFaMisccT2AOyeRKkBbGd4zIkunPZIZjt%2FOM=
+dRuep0naLhFBhSQK7c7BhvxJP12zmWLnkypVpiYORpGWBzwkyHLpLt5aidwwljvhnEuG8WUiKzc=
+vuF7342k0%2F0WL9Mn72hBcQYv%2BCZ5dxNNqXNpvGWOj1ZUg%3D%3D" class=3D"product_l=
+ink" target=3D"_blank" style=3D"color: #0c475c; text-decoration: none !impo=
+rtant; text-underline: none; word-wrap: break-word; text-align: left !impor=
+tant; font-weight: 400;">
+                                                                           =
+ Bidri Kaiser Chain Wallet
+                                                                           =
+ </a>
+                                                                           =
+=20
+                                                                           =
+=20
+                                                                           =
+=20
+                                                                           =
+=20
+                                                                          <=
+/p>
+                                                                        </t=
+h>
+                                                                        <th=
+ class=3D"right line-item-qty" width=3D"1" style=3D"mso-line-height-rule: e=
+xactly; white-space: nowrap; padding: 10px 5px 10px 20px; border-color: #ed=
+e6df;" align=3D"right" bgcolor=3D"#ede6df" valign=3D"top">
+                                                                          <=
+p style=3D"mso-line-height-rule: exactly; direction: ltr; font-family: &#39=
+;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,san=
+s-serif; font-size: 15px; line-height: 20px; font-weight: 400; text-transfo=
+rm: none; color: #0c475c; background-color: #ede6df !important; margin: 0; =
+border-color: #ede6df;" align=3D"right">x=C2=A01</p>
+                                                                        </t=
+h>
+                                                                        <th=
+ class=3D"right line-item-line-price" width=3D"1" style=3D"mso-line-height-=
+rule: exactly; white-space: nowrap; padding: 10px 0 10px 20px; border-color=
+: #ede6df;" align=3D"right" bgcolor=3D"#ede6df" valign=3D"top">
+                                                                          <=
+p style=3D"mso-line-height-rule: exactly; direction: ltr; font-family: &#39=
+;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,san=
+s-serif; font-size: 15px; line-height: 20px; font-weight: 400; text-transfo=
+rm: none; color: #0c475c; background-color: #ede6df !important; margin: 0; =
+border-color: #ede6df;" align=3D"right">
+                                                                           =
+ =E2=82=B9 999.00
+                                                                          <=
+/p>
+                                                                        </t=
+h>
+                                                                      </tr>
+                                                                    </tbody=
+></table>
+                                                                  </th>
+                                                                </tr>
+                                                             =20
+                                                           =20
+                                                           =20
+                                                              <!-- Bold 2 -=
+->
+                                                             =20
+                                                             =20
+                                                             =20
+                                                             =20
+                                                             =20
+                                                               =20
+                                                               =20
+                                                             =20
+                                                              <!-- end Bold=
+ 2 -->
+                                                              <tr class=3D"=
+row-border-bottom" style=3D"border-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                                <th class=
+=3D"table-stack product-image-wrapper stack-column-center" width=3D"1" styl=
+e=3D"mso-line-height-rule: exactly; border-bottom-width: 1px; border-bottom=
+-style: solid; padding-top: 10px; padding-bottom: 10px; padding-right: 10px=
+; border-color: #ede6df;" bgcolor=3D"#ede6df" valign=3D"middle"><a href=3D"=
+https://zouk.co.in/_t/c/A1030004-1820FDEC03E96530-132FA8A4?l=3DAADi9ijxs%2B=
+SPTo%2Bf1%2F3G82nCBCtHvKfXpDKViAZmltTcWFxZ%2FqrRt7HJp1LDtoWps9C3fFO1XoIi939=
+weF0itJiLzTAzGC%2FQpy7E9uuQKW3H2GDE%2F2YuhECHEZA0cwgI64YyDvu9I5%2FlJtxKLIfg=
+PGNId6b7iK75Krlz%2BnelFV9vLDa1d%2BfkVLb6O7Ox4eSytMPxPO%2FLb4KLqp1dCExs9EP5n=
+xKTcFlG98vUBr0TWPfPGIdqq5BREQvcC%2BzlG5twpVDGqU4%2Fx%2BBxtwsoazIidch3kffqMK=
+75rKsZ3ZikpVAtVRzs3t8GLdo2iOURmdYzNdH%2FzNYAXMN5E7ivPv3Ye1tmzCkmaoPrc0mY3xo=
+oN6qSK8SOrnvb2Ja41eOEvyOv%2BsiGEfR%2FmVzNzC9cQ95hxiHpOEA4FK2VCA%3D%3D&amp;c=
+=3DAACskXKnUDavZKzoRVG6XKNNXloXVWTCJTvvnC9GDgidUiRTxt5%2B11r5kNuOHPrsU9rRkx=
+PpDPsnV4h0uPPEUrbaxt3xtOoLJyJdFswiFmvQi9e5DjnYH%2BQr5OwLzeA9trxO21E2dIvCl4b=
+tLpPHCEozrTj%2BG104rh%2B10Oifb6aP6yQEq7Q8uBhTMUOSNZU32ohACn9Jxxrl%2FID1mUhj=
+6bL1HoBw2x7eeJS0wXQqCE75AjxfERwwcjtwDAuq6mPLpi7yXjtJ4A%2FBd0ze3PHb2kNdmSoqW=
+vO6xU2DserqFp1y1C7%2BrrnBQ113PPmLf5p68Q61VS20CHaOzstfEXmiDAY2jIMoc6sTcZ4Ueg=
+sA7ca3p%2FJtVXS%2FwzP%2Ft%2FbXYX2wqEsyZYWUZ4jCVBZuYUTsKcAqBzyd%2BXmC0e%2BD5=
+VXYjzbNUXB5WVGvpVHXJ3S8qicPUvH0PxRKVz7MtgeUNg%3D%3D" class=3D"product_link"=
+ target=3D"_blank" style=3D"color: #0c475c; text-decoration: none !importan=
+t; text-underline: none; word-wrap: break-word;"><img width=3D"105" class=
+=3D"product-image" src=3D"https://cdn.shopify.com/s/files/1/2186/5207/files=
+/harmonysling1x1_0002_Layer15.jpg?v=3D1713860211&amp;width=3D210" alt=3D"Fl=
+oMotif Harmony Sling Bag" style=3D"background-color: #ede6df !important; ve=
+rtical-align: middle; text-align: center; width: 105px; max-width: 105px; h=
+eight: auto !important; border-radius: 0px; padding: 0px; border-color: #ed=
+e6df;"/></a></th>
+                                                                <th class=
+=3D"product-details-wrapper table-stack stack-column" style=3D"mso-line-hei=
+ght-rule: exactly; border-bottom-width: 1px; border-bottom-style: solid; pa=
+dding-top: 10px; padding-bottom: 10px; border-color: #ede6df;" bgcolor=3D"#=
+ede6df" valign=3D"middle">
+                                                                  <table ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%" style=3D"min-=
+width: 100%; direction: ltr; border-color: #ede6df;" role=3D"presentation" =
+bgcolor=3D"#ede6df">
+                                                                    <tbody>=
+<tr style=3D"border-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                                     =20
+                                                                      <th c=
+lass=3D"line-item-description" style=3D"mso-line-height-rule: exactly; dire=
+ction: ltr; font-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont=
+,&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 15px; line-height: 20px; f=
+ont-weight: 400; text-transform: none; color: #0c475c; padding: 10px 5px 10=
+px 0; border-color: #ede6df;" align=3D"left" bgcolor=3D"#ede6df" valign=3D"=
+top">
+                                                                        <p =
+style=3D"mso-line-height-rule: exactly; direction: ltr; font-family: &#39;V=
+erdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-=
+serif; font-size: 15px; line-height: 20px; font-weight: 400; text-transform=
+: none; color: #0c475c; background-color: #ede6df !important; margin: 0; bo=
+rder-color: #ede6df;" align=3D"left">
+                                                                          <=
+a href=3D"https://zouk.co.in/_t/c/A1030004-1820FDEC03E96530-132FA8A4?l=3DAA=
+AuB0YQR1Sh4w7Kbtp2oHb1ojcjzL4mOxTBoSt0UCt28T%2Fl3wjeFjaEhfGNwRWRGDaJvEhHzhb=
+RJKoPel0p%2B%2Bc%2FTI98fZQmUz4%2BX8gWlKOBfDQMxMI9U6iMm%2BBgTNlBnHzgYXX3vMfH=
+UhL670NxmnLPTgSS1ZyfYHL2JEWGzHB5zNBz1JmaiOSbORhuGeIBZ0yFic4J2mO58HHfW0xxNp%=
+2Fxmtp2uj1aXjMOgRtdAqbH7nOqgCoMZXf5qjj3Q7pprIlzAC1QAN9NGW2tlzEmleUHmX8uVhrJ=
+yqhBV1SMSVc3A%2FaLSQYvKSBovpQNyuXkMjX%2F6e%2B5H3yuFlv88jiDBGSzOitCh0ltv2r6A=
+P4smBZkHcfoM3x%2BOjnfdSXrszRWgkg83FWfbeekn8zkNfe4WGqzdIYkh0xglg%3D%3D&amp;c=
+=3DAAB03%2F%2F45M%2B17KNiiE4eElvJhMwKe3iDHwf2CIptpSRbRxqphbG41TObAVnCHSKvV%=
+2FR5lyz33o89CnMp2sb00v3T2TNaH0fExxxx5UjxOsR%2FLBGPpenkIUffDqCalawWRyy7I2scl=
+x75FciLhRUaDg3WczhbaN7Mx75YbnF3h%2Fmemnef445zBy1iSWi01Dv2Chgn4HD31nO3u1k2dr=
+zr1I9gm%2FlOLq%2BZy3jfE374048rjs9wuZ2UZUUGkYoelwIGiVW715ye1KI3AjT27ClZCopEF=
+1EYYDoMWqzs9xoHP41pMcml3BQT%2F0h5mXseMvqzgTvRbwTj6t3uwRXRIYkaNuRX69BrJdV2t8=
+IUZ0Wn61bOL86e1ODBcFFTICzmTwH%2Bfd9%2FVKVPk0eWpk11t%2B8FHz6Yw%2BWQkLPcqswou=
+vOwMOdSU2aFufn%2FJsduDyuMzbAqP3LQ048zsoLq7Yaj6Q%3D%3D" class=3D"product_lin=
+k" target=3D"_blank" style=3D"color: #0c475c; text-decoration: none !import=
+ant; text-underline: none; word-wrap: break-word; text-align: left !importa=
+nt; font-weight: 400;">
+                                                                           =
+ FloMotif Harmony Sling Bag
+                                                                           =
+ </a>
+                                                                           =
+=20
+                                                                           =
+=20
+                                                                           =
+=20
+                                                                           =
+  =20
+                                                                           =
+  =20
+                                                                           =
+    =20
+                                                                           =
+       <br style=3D"background-color: #ede6df !important; border-color: #ed=
+e6df;"/>
+                                                                           =
+       <span class=3D"muted" style=3D"text-align: center; direction: ltr; f=
+ont-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe U=
+I&#39;,Arial,sans-serif; font-size: 13px; line-height: 20px; font-weight: n=
+ormal; text-transform: none; color: #212121; background-color: #ede6df !imp=
+ortant; border-color: #ede6df;">Add on: Personalised Tag (Exclusive), Initi=
+al-TK</span>
+                                                                           =
+    =20
+                                                                           =
+  =20
+                                                                           =
+=20
+                                                                           =
+  =20
+                                                                           =
+  =20
+                                                                           =
+    =20
+                                                                           =
+  =20
+                                                                           =
+=20
+                                                                           =
+  =20
+                                                                           =
+  =20
+                                                                           =
+    =20
+                                                                           =
+  =20
+                                                                           =
+=20
+                                                                           =
+=20
+                                                                          <=
+/p>
+                                                                        </t=
+h>
+                                                                        <th=
+ class=3D"right line-item-qty" width=3D"1" style=3D"mso-line-height-rule: e=
+xactly; white-space: nowrap; padding: 10px 5px 10px 20px; border-color: #ed=
+e6df;" align=3D"right" bgcolor=3D"#ede6df" valign=3D"top">
+                                                                          <=
+p style=3D"mso-line-height-rule: exactly; direction: ltr; font-family: &#39=
+;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,san=
+s-serif; font-size: 15px; line-height: 20px; font-weight: 400; text-transfo=
+rm: none; color: #0c475c; background-color: #ede6df !important; margin: 0; =
+border-color: #ede6df;" align=3D"right">x=C2=A01</p>
+                                                                        </t=
+h>
+                                                                        <th=
+ class=3D"right line-item-line-price" width=3D"1" style=3D"mso-line-height-=
+rule: exactly; white-space: nowrap; padding: 10px 0 10px 20px; border-color=
+: #ede6df;" align=3D"right" bgcolor=3D"#ede6df" valign=3D"top">
+                                                                          <=
+p style=3D"mso-line-height-rule: exactly; direction: ltr; font-family: &#39=
+;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,san=
+s-serif; font-size: 15px; line-height: 20px; font-weight: 400; text-transfo=
+rm: none; color: #0c475c; background-color: #ede6df !important; margin: 0; =
+border-color: #ede6df;" align=3D"right">
+                                                                           =
+ =E2=82=B9 1,399.00
+                                                                          <=
+/p>
+                                                                        </t=
+h>
+                                                                      </tr>
+                                                                    </tbody=
+></table>
+                                                                  </th>
+                                                                </tr>
+                                                             =20
+                                                           =20
+                                                           =20
+                                                              <!-- Bold 2 -=
+->
+                                                             =20
+                                                             =20
+                                                             =20
+                                                             =20
+                                                             =20
+                                                               =20
+                                                               =20
+                                                             =20
+                                                              <!-- end Bold=
+ 2 -->
+                                                              <tr class=3D"=
+row-border-bottom" style=3D"border-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                                <th class=
+=3D"table-stack product-image-wrapper stack-column-center" width=3D"1" styl=
+e=3D"mso-line-height-rule: exactly; border-bottom-width: 1px; border-bottom=
+-style: solid; padding-top: 10px; padding-bottom: 10px; padding-right: 10px=
+; border-color: #ede6df;" bgcolor=3D"#ede6df" valign=3D"middle"><a href=3D"=
+https://zouk.co.in/_t/c/A1030004-1820FDEC03E96530-132FA8A4?l=3DAADATyx8A%2F=
+COqLgzfXysM6%2B%2BXXua1zD4GiNa5jsm989U8LUxNLPmTK85m2IzlpHOqNIUQFkPCaQfeGMPP=
+%2Fe6G59IDQ374iXFHgjaCaLfC8%2FciH4i11VojCda6HD6T%2BXgorHgh8Dwzix5HgulX5mdM6=
+RdY3sW026%2BspPu5BSXAuJLJY0xnWNDxifzoM2seVfAjRYWBlRV07KSWF2fY1XF8Udga1RFSeP=
+JJ8sCtkn9phUGIPxAtl2mQyTX6NsPf8vUOaSfhcWMfh9LuLMVhWnL9bmX1Rt2t05NsMNqOuHiBV=
+128LUxbphVeUGy22OmmQ8fmjZCibnmoNR6cM5fStqWd9j%2FRGvGzEnnVDExF90VGBcj7ogxJNN=
+yPdoKYwdHeSJf480Jv1jrr67PObRp&amp;c=3DAABHiwPayteeodFKVTdXft8i9cpHue0PgZge2=
+POXhFvc2zxLcf04DscL6HPwyN9hT9DseS3BCL4e1LN7YdfyR%2B8Vl36mXeo5xD5o9epsP%2Fo%=
+2Fdmgtd6iFVut9i6GjJ%2Fhs8qFLH5by1lmwqvhbNT0iACxPuQj83h%2B9cNzvLHydZCGPLg66V=
+zYJlC%2FRUTzG5Cp5RQzNdN%2BOBX%2Faww%2FOGdNVh8VfJYfwERDqTrrLQgzvII70SnbB0M4v=
+opj50X%2FiIMqpqeVxpFuQTasMEs%2BhsqEvT%2B2gDGGOxaOj1DH0pKVSU%2B6Y62i6Bhoz1Kp=
+S3cy1OvZIVOZwcZG9ebJkbHczAODjjRNf68%2FNM3Yahs3d8T2IxkgoFcJ%2B%2B4PtDE9%2Fx2=
+7Kf87Sy5DZeKuRi%2F2KNGt0wQ2qJzdcwOL5upNrAePj3ji%2Bp6%2Bq2djKaoNFGttb%2FVBSB=
+0z7MCU9qd06qh9A%2Fyu2EA%3D%3D" class=3D"product_link" target=3D"_blank" sty=
+le=3D"color: #0c475c; text-decoration: none !important; text-underline: non=
+e; word-wrap: break-word;"><img width=3D"105" class=3D"product-image" src=
+=3D"https://cdn.shopify.com/s/files/1/2186/5207/files/ZoukNewbag04156copy_a=
+aa72981-1d55-45eb-98bc-e7535103bf1f.jpg?v=3D1737807031&amp;width=3D210" alt=
+=3D"Personalised Tag (Exclusive)" style=3D"background-color: #ede6df !impor=
+tant; vertical-align: middle; text-align: center; width: 105px; max-width: =
+105px; height: auto !important; border-radius: 0px; padding: 0px; border-co=
+lor: #ede6df;"/></a></th>
+                                                                <th class=
+=3D"product-details-wrapper table-stack stack-column" style=3D"mso-line-hei=
+ght-rule: exactly; border-bottom-width: 1px; border-bottom-style: solid; pa=
+dding-top: 10px; padding-bottom: 10px; border-color: #ede6df;" bgcolor=3D"#=
+ede6df" valign=3D"middle">
+                                                                  <table ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%" style=3D"min-=
+width: 100%; direction: ltr; border-color: #ede6df;" role=3D"presentation" =
+bgcolor=3D"#ede6df">
+                                                                    <tbody>=
+<tr style=3D"border-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                                     =20
+                                                                      <th c=
+lass=3D"line-item-description" style=3D"mso-line-height-rule: exactly; dire=
+ction: ltr; font-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont=
+,&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 15px; line-height: 20px; f=
+ont-weight: 400; text-transform: none; color: #0c475c; padding: 10px 5px 10=
+px 0; border-color: #ede6df;" align=3D"left" bgcolor=3D"#ede6df" valign=3D"=
+top">
+                                                                        <p =
+style=3D"mso-line-height-rule: exactly; direction: ltr; font-family: &#39;V=
+erdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-=
+serif; font-size: 15px; line-height: 20px; font-weight: 400; text-transform=
+: none; color: #0c475c; background-color: #ede6df !important; margin: 0; bo=
+rder-color: #ede6df;" align=3D"left">
+                                                                          <=
+a href=3D"https://zouk.co.in/_t/c/A1030004-1820FDEC03E96530-132FA8A4?l=3DAA=
+CqBlHSZWiow9Jrp%2BOX8Be498%2BRCxSqgBAaExRi8Hq5Voe8tsTIS2RD9ka%2BKiSlU%2Bk5L=
+5cpRk7LuIsqwHPlWCur35xWSIAO9LcgDUq7%2FUmkzap4wa3%2BM4CUNnSTh%2Fz9AW29Ksv8yQ=
+uRxhkKOLYTxRUbwYsZWMIMJCTIIjnthJuOW3JN74be7WJ9djm4sQmdsupAI%2BjBO3F4ip%2FUK=
+wBZzwD%2FWWUbppMJYNKq8vQyDcsH14RE6eOjg8VFnABQunIf3ogiWLdjv2FAbJEommoRmWHP2y=
+8jkXFbpX%2FkrTDQCiiTuwXlkdTThIBfRC7HDFsGZwFWPEXVb8EcPGAvxHbpF8pWXkFwp5iyC7l=
+FVI%2BGJDPWu%2B99Zw7J%2FLynoqiuI7lWjCwTtvkDNiGww%2FzE&amp;c=3DAAC1IKXcgBh1n=
+6jsuze1Yv4lnOIW0%2BuYT9%2BMBNQEpqj2EE6%2BS%2Fw4xdYMLYaPkQ6lbZbAysN6C8TfKPFH=
+a4U9On2ohdb70Eapm6yBXaCm%2F4ovNxM9YMztHMhSLJqX017B095fJpiGSSM2dTWDI4yJW35oj=
+vb4SgelhIk8TBscgdY2f645iiPWaYoo7brsT%2B4HsSvwMyVSaxcT2YZc7svGLmsIDhpb8ZyKEz=
+n3EyXG4g9Wxg2zsyuX%2BIS4ZBNaImp%2B%2F7Wwstg8g3yeLuioYYszDyyHjm2Ejtmf6zdlCqT=
+5SiPSLsslS6Ir8QkV%2Fw8dTn7BaUXQlHi%2B0XwrQcL0F6AX6eerRf%2FbDYG9pIqTlejpgUxZ=
+iH0NhWWE7XRkdYk62XrfpEJ7gjqNdqUb0urZJEv00OCJCED9W0swKs2wQPWzP%2BdicDvfZwqH9=
+%2B2SapU2g3u7QK9y8%2BUCvECXa2Vzbg%3D%3D" class=3D"product_link" target=3D"_=
+blank" style=3D"color: #0c475c; text-decoration: none !important; text-unde=
+rline: none; word-wrap: break-word; text-align: left !important; font-weigh=
+t: 400;">
+                                                                           =
+ Personalised Tag (Exclusive)
+                                                                           =
+ </a>
+                                                                           =
+=20
+                                                                           =
+=20
+                                                                           =
+=20
+                                                                           =
+  =20
+                                                                           =
+  =20
+                                                                           =
+    =20
+                                                                           =
+       <br style=3D"background-color: #ede6df !important; border-color: #ed=
+e6df;"/>
+                                                                           =
+       <span class=3D"muted" style=3D"text-align: center; direction: ltr; f=
+ont-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe U=
+I&#39;,Arial,sans-serif; font-size: 13px; line-height: 20px; font-weight: n=
+ormal; text-transform: none; color: #212121; background-color: #ede6df !imp=
+ortant; border-color: #ede6df;">Initial: TK</span>
+                                                                           =
+    =20
+                                                                           =
+  =20
+                                                                           =
+=20
+                                                                           =
+  =20
+                                                                           =
+  =20
+                                                                           =
+    =20
+                                                                           =
+  =20
+                                                                           =
+=20
+                                                                           =
+  =20
+                                                                           =
+  =20
+                                                                           =
+    =20
+                                                                           =
+  =20
+                                                                           =
+=20
+                                                                           =
+  =20
+                                                                           =
+  =20
+                                                                           =
+    =20
+                                                                           =
+       <br style=3D"background-color: #ede6df !important; border-color: #ed=
+e6df;"/>
+                                                                           =
+       <span class=3D"muted" style=3D"text-align: center; direction: ltr; f=
+ont-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe U=
+I&#39;,Arial,sans-serif; font-size: 13px; line-height: 20px; font-weight: n=
+ormal; text-transform: none; color: #212121; background-color: #ede6df !imp=
+ortant; border-color: #ede6df;">Ordered for: FloMotif Harmony Sling Bag</sp=
+an>
+                                                                           =
+    =20
+                                                                           =
+  =20
+                                                                           =
+=20
+                                                                           =
+=20
+                                                                          <=
+/p>
+                                                                        </t=
+h>
+                                                                        <th=
+ class=3D"right line-item-qty" width=3D"1" style=3D"mso-line-height-rule: e=
+xactly; white-space: nowrap; padding: 10px 5px 10px 20px; border-color: #ed=
+e6df;" align=3D"right" bgcolor=3D"#ede6df" valign=3D"top">
+                                                                          <=
+p style=3D"mso-line-height-rule: exactly; direction: ltr; font-family: &#39=
+;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,san=
+s-serif; font-size: 15px; line-height: 20px; font-weight: 400; text-transfo=
+rm: none; color: #0c475c; background-color: #ede6df !important; margin: 0; =
+border-color: #ede6df;" align=3D"right">x=C2=A01</p>
+                                                                        </t=
+h>
+                                                                        <th=
+ class=3D"right line-item-line-price" width=3D"1" style=3D"mso-line-height-=
+rule: exactly; white-space: nowrap; padding: 10px 0 10px 20px; border-color=
+: #ede6df;" align=3D"right" bgcolor=3D"#ede6df" valign=3D"top">
+                                                                          <=
+p style=3D"mso-line-height-rule: exactly; direction: ltr; font-family: &#39=
+;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,san=
+s-serif; font-size: 15px; line-height: 20px; font-weight: 400; text-transfo=
+rm: none; color: #0c475c; background-color: #ede6df !important; margin: 0; =
+border-color: #ede6df;" align=3D"right">
+                                                                           =
+ =E2=82=B9 150.00
+                                                                          <=
+/p>
+                                                                        </t=
+h>
+                                                                      </tr>
+                                                                    </tbody=
+></table>
+                                                                  </th>
+                                                                </tr>
+                                                             =20
+                                                           =20
+                                                          </tbody></table>
+                                                        </th>
+                                                      </tr>
+                                                      <tr style=3D"border-c=
+olor: #ede6df;" bgcolor=3D"#ede6df">
+                                                        <th class=3D"pricin=
+g_table table_content" style=3D"mso-line-height-rule: exactly; padding-top:=
+ 5px; padding-bottom: 0px; border-color: #ede6df;" bgcolor=3D"#ede6df" vali=
+gn=3D"top">
+                                                          <table cellspacin=
+g=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%" style=3D"min-width: 1=
+00%; direction: ltr; border-color: #ede6df;" role=3D"presentation" bgcolor=
+=3D"#ede6df">
+                                                           =20
+                                                              <tbody><tr st=
+yle=3D"border-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                                <th class=
+=3D"table-title" style=3D"mso-line-height-rule: exactly; direction: ltr; fo=
+nt-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI=
+&#39;,Arial,sans-serif; font-size: 15px; line-height: 20px; font-weight: 40=
+0; text-transform: none; color: #0c475c; width: 65%; padding: 5px 0; border=
+-color: #ede6df;" align=3D"left" bgcolor=3D"#ede6df" valign=3D"top">
+                                                                  <span dat=
+a-key=3D"16030665_discount" style=3D"background-color: #ede6df !important; =
+border-color: #ede6df;">Discount</span> <span class=3D"discount-code-text" =
+style=3D"word-break: break-all; background-color: #ede6df !important; borde=
+r-color: #ede6df;">(B1G1)</span>
+</th>
+                                                                <th class=
+=3D"table-text" style=3D"mso-line-height-rule: exactly; direction: ltr; fon=
+t-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&=
+#39;,Arial,sans-serif; font-size: 15px; line-height: 20px; font-weight: 400=
+; text-transform: none; color: #0c475c; width: 35%; padding: 5px 0; border-=
+color: #ede6df;" align=3D"right" bgcolor=3D"#ede6df" valign=3D"middle">-=E2=
+=82=B9 999.00</th>
+                                                              </tr>
+                                                           =20
+                                                            <tr style=3D"bo=
+rder-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                              <th class=3D"=
+table-title" data-key=3D"16030665_subtotal" style=3D"mso-line-height-rule: =
+exactly; direction: ltr; font-family: &#39;Verdana&#39;,-apple-system,Blink=
+MacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 15px; line-he=
+ight: 20px; font-weight: 400; text-transform: none; color: #0c475c; width: =
+65%; padding: 5px 0; border-color: #ede6df;" align=3D"left" bgcolor=3D"#ede=
+6df" valign=3D"top">Subtotal</th>
+                                                              <th class=3D"=
+table-text" style=3D"mso-line-height-rule: exactly; direction: ltr; font-fa=
+mily: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;=
+,Arial,sans-serif; font-size: 15px; line-height: 20px; font-weight: 400; te=
+xt-transform: none; color: #0c475c; width: 35%; padding: 5px 0; border-colo=
+r: #ede6df;" align=3D"right" bgcolor=3D"#ede6df" valign=3D"middle">=E2=82=
+=B9 1,549.00</th>
+                                                            </tr>
+                                                           =20
+                                                           =20
+                                                           =20
+                                                            <tr style=3D"bo=
+rder-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                              <th class=3D"=
+table-title" data-key=3D"16030665_total_minus_tax" style=3D"mso-line-height=
+-rule: exactly; direction: ltr; font-family: &#39;Verdana&#39;,-apple-syste=
+m,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 15px; =
+line-height: 20px; font-weight: 400; text-transform: none; color: #0c475c; =
+width: 65%; padding: 5px 0; border-color: #ede6df;" align=3D"left" bgcolor=
+=3D"#ede6df" valign=3D"top">Total excl. GST</th>
+                                                              <th class=3D"=
+table-text" style=3D"mso-line-height-rule: exactly; direction: ltr; font-fa=
+mily: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;=
+,Arial,sans-serif; font-size: 15px; line-height: 20px; font-weight: 400; te=
+xt-transform: none; color: #0c475c; width: 35%; padding: 5px 0; border-colo=
+r: #ede6df;" align=3D"right" bgcolor=3D"#ede6df" valign=3D"middle">=E2=82=
+=B9 1,383.04</th>
+                                                            </tr>
+                                                           =20
+                                                              <tr style=3D"=
+border-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                                <th class=
+=3D"table-title" data-key=3D"16030665_total_tax" style=3D"mso-line-height-r=
+ule: exactly; direction: ltr; font-family: &#39;Verdana&#39;,-apple-system,=
+BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 15px; li=
+ne-height: 20px; font-weight: 400; text-transform: none; color: #0c475c; wi=
+dth: 65%; padding: 5px 0; border-color: #ede6df;" align=3D"left" bgcolor=3D=
+"#ede6df" valign=3D"top">GST</th>
+                                                                <th class=
+=3D"table-text" style=3D"mso-line-height-rule: exactly; direction: ltr; fon=
+t-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&=
+#39;,Arial,sans-serif; font-size: 15px; line-height: 20px; font-weight: 400=
+; text-transform: none; color: #0c475c; width: 35%; padding: 5px 0; border-=
+color: #ede6df;" align=3D"right" bgcolor=3D"#ede6df" valign=3D"middle">
+                                                                  =E2=82=B9=
+ 165.96</th>
+                                                              </tr>
+                                                           =20
+                                                            <tr class=3D"pr=
+icing_table-total-row" style=3D"border-color: #ede6df;" bgcolor=3D"#ede6df"=
+>
+                                                              <th class=3D"=
+table-title" data-key=3D"16030665_total" style=3D"mso-line-height-rule: exa=
+ctly; direction: ltr; font-family: &#39;Verdana&#39;,-apple-system,BlinkMac=
+SystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 15px; line-heigh=
+t: 20px; font-weight: 400; text-transform: none; color: #0c475c; width: 65%=
+; padding: 5px 0; border-color: #ede6df;" align=3D"left" bgcolor=3D"#ede6df=
+" valign=3D"top">Total</th>
+                                                              <th class=3D"=
+table-text" style=3D"mso-line-height-rule: exactly; direction: ltr; font-fa=
+mily: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;=
+,Arial,sans-serif; font-size: 15px; line-height: 20px; font-weight: 400; te=
+xt-transform: none; color: #0c475c; width: 35%; padding: 5px 0; border-colo=
+r: #ede6df;" align=3D"right" bgcolor=3D"#ede6df" valign=3D"middle">=E2=82=
+=B9 1,549.00</th>
+                                                            </tr>
+                                                           =20
+                                                           =20
+                                                           =20
+                                                          </tbody></table>
+                                                        </th>
+                                                      </tr>
+                                                    </tbody></table>
+                                                  </th>
+                                               =20
+                                              </tr>
+                                            </tbody></table>
+                                          </th>
+                                        </tr>
+                                        <!-- END SECTION: Products With Pri=
+cing -->
+                                        <!-- BEGIN SECTION: Payment Info --=
+>
+                                        <tr id=3D"section-16030666" class=
+=3D"section payment_info">
+                                          <th class=3D"section_border" styl=
+e=3D"mso-line-height-rule: exactly; padding: 0 80px;" bgcolor=3D"#fcf7f3">
+                                            <table border=3D"0" width=3D"10=
+0%" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" style=3D"min-width=
+: 100%; direction: ltr;" role=3D"presentation">
+                                              <tbody><tr>
+                                                <th class=3D"section_conten=
+t" style=3D"mso-line-height-rule: exactly; padding: 20px; border-color: #ed=
+e6df;" bgcolor=3D"#ede6df" valign=3D"top">
+                                                  <table class=3D"table_inn=
+er" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%" style=
+=3D"min-width: 100%; direction: ltr; border-color: #ede6df;" role=3D"presen=
+tation" bgcolor=3D"#ede6df">
+                                                    <!-- PAYMENT INFO -->
+                                                   =20
+                                                   =20
+                                                     =20
+                                                     =20
+                                                   =20
+                                                   =20
+                                                      <tbody><tr style=3D"b=
+order-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                        <th colspan=3D"2" s=
+tyle=3D"mso-line-height-rule: exactly; border-color: #ede6df;" bgcolor=3D"#=
+ede6df" valign=3D"top">
+                                                          <h3 data-key=3D"1=
+6030666_payment_info" style=3D"font-family: &#39;Verdana&#39;,-apple-system=
+,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; color: #cc664e; fo=
+nt-size: 14px; line-height: 20px; font-weight: 400; text-transform: none; b=
+order-bottom-width: 1px; border-bottom-style: solid; padding-bottom: 5px; b=
+ackground-color: #ede6df !important; margin: 0 0 10px; border-color: #ede6d=
+f;" align=3D"left">Payment Info</h3>
+                                                        </th>
+                                                      </tr>
+                                                     =20
+                                                       =20
+                                                       =20
+                                                       =20
+                                                       =20
+                                                       =20
+                                                       =20
+                                                        <!-- PAYMENT METHOD=
+ IMAGE -->
+                                                       =20
+                                                       =20
+                                                       =20
+                                                        <tr style=3D"border=
+-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                          <th class=3D"tabl=
+e-title" style=3D"mso-line-height-rule: exactly; direction: ltr; font-famil=
+y: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Ar=
+ial,sans-serif; font-size: 15px; line-height: 20px; font-weight: 400; text-=
+transform: none; color: #0c475c; width: 65%; padding: 5px 0; border-color: =
+#ede6df;" align=3D"left" bgcolor=3D"#ede6df" valign=3D"top">
+                                                            <table cellspac=
+ing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%" style=3D"min-width:=
+ 100%; direction: ltr; border-color: #ede6df;" role=3D"presentation" bgcolo=
+r=3D"#ede6df">
+                                                              <tbody><tr st=
+yle=3D"border-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                                <th valign=
+=3D"middle" width=3D"40" style=3D"mso-line-height-rule: exactly; direction:=
+ ltr; font-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;=
+Segoe UI&#39;,Arial,sans-serif; font-size: 15px; line-height: 20px; font-we=
+ight: 400; text-transform: none; color: #0c475c; padding: 5px 10px 5px 0; b=
+order-color: #ede6df;" align=3D"left" bgcolor=3D"#ede6df">
+                                                                  <img widt=
+h=3D"40" style=3D"width: 40px; vertical-align: middle; height: auto !import=
+ant; background-color: #ede6df !important; border-color: #ede6df;" alt=3D"S=
+hopflo Icon" src=3D"https://www.orderlyemails.com/mobile-receipt-cash.png"/=
+>
+                                                                </th>
+                                                                <th style=
+=3D"mso-line-height-rule: exactly; direction: ltr; font-family: &#39;Verdan=
+a&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif=
+; font-size: 15px; line-height: 20px; font-weight: 400; text-transform: non=
+e; color: #0c475c; padding: 5px 0; border-color: #ede6df;" align=3D"left" b=
+gcolor=3D"#ede6df" valign=3D"middle">
+                                                                 =20
+                                                                    Shopflo
+                                                                 =20
+                                                                 =20
+                                                                </th>
+                                                              </tr>
+                                                            </tbody></table=
+>
+                                                          </th>
+                                                          <th class=3D"tabl=
+e-text" style=3D"mso-line-height-rule: exactly; direction: ltr; font-family=
+: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Ari=
+al,sans-serif; font-size: 15px; line-height: 20px; font-weight: 400; text-t=
+ransform: none; color: #0c475c; width: 35%; padding: 10px 0; border-color: =
+#ede6df;" align=3D"right" bgcolor=3D"#ede6df" valign=3D"middle">
+                                                            =E2=82=B9 1,549=
+.00
+                                                            </th>
+                                                          </tr>
+                                                       =20
+                                                     =20
+                                                    </tbody></table>
+                                                  </th>
+                                                </tr>
+                                              </tbody></table>
+                                            </th>
+                                          </tr>
+                                          <!-- END SECTION: Payment Info --=
+>
+                                          <!-- BEGIN SECTION: Customer And =
+Shipping Address -->
+                                          <tr id=3D"section-16030667" class=
+=3D"section customer_and_shipping_address">
+                                            <th class=3D"section_border" st=
+yle=3D"mso-line-height-rule: exactly; padding: 0 80px;" bgcolor=3D"#fcf7f3"=
+>
+                                              <table border=3D"0" width=3D"=
+100%" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" style=3D"min-wid=
+th: 100%; direction: ltr;" role=3D"presentation">
+                                                <tbody><tr>
+                                                  <!-- BEGIN : 2 COLUMNS : =
+BILL_TO -->
+                                                  <th class=3D"section_cont=
+ent" style=3D"mso-line-height-rule: exactly; padding: 20px; border-color: #=
+ede6df;" bgcolor=3D"#ede6df" valign=3D"top">
+                                                    <table border=3D"0" wid=
+th=3D"100%" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" style=3D"m=
+in-width: 100%; direction: ltr; border-color: #ede6df;" role=3D"presentatio=
+n" bgcolor=3D"#ede6df">
+                                                      <tbody><tr style=3D"b=
+order-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                        <!-- BEGIN : Column=
+ 1 of 2 : BILL_TO -->
+                                                        <th width=3D"50%" c=
+lass=3D"column_1_of_2 column_bill_to " style=3D"mso-line-height-rule: exact=
+ly; border-color: #ede6df;" align=3D"left" bgcolor=3D"#ede6df" valign=3D"to=
+p">
+                                                          <table align=3D"c=
+enter" border=3D"0" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" styl=
+e=3D"min-width: 100%; direction: ltr; border-color: #ede6df;" role=3D"prese=
+ntation" bgcolor=3D"#ede6df">
+                                                           =20
+                                                             =20
+                                                                  <tbody><t=
+r style=3D"border-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                                    <th sty=
+le=3D"mso-line-height-rule: exactly; padding-right: 10px; border-color: #ed=
+e6df;" align=3D"left" bgcolor=3D"#ede6df" valign=3D"top">
+                                                                      <h3 d=
+ata-key=3D"16030667_ship_to" style=3D"font-family: &#39;Verdana&#39;,-apple=
+-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; color: #cc6=
+64e; font-size: 14px; line-height: 20px; font-weight: 400; text-transform: =
+none; border-bottom-width: 1px; border-bottom-style: solid; padding-bottom:=
+ 5px; background-color: #ede6df !important; margin: 0 0 10px; border-color:=
+ #ede6df;" align=3D"left">Shipping Address</h3>
+                                                                    </th>
+                                                                  </tr>
+                                                                  <tr style=
+=3D"border-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                                    <th cla=
+ss=3D"shipping_address " style=3D"mso-line-height-rule: exactly; padding-ri=
+ght: 10px; border-color: #ede6df;" align=3D"left" bgcolor=3D"#ede6df" valig=
+n=3D"top">
+                                                                      <p st=
+yle=3D"mso-line-height-rule: exactly; direction: ltr; font-family: &#39;Ver=
+dana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-se=
+rif; font-size: 15px; line-height: 20px; font-weight: 400; text-transform: =
+none; color: #0c475c; background-color: #ede6df !important; margin: 0; bord=
+er-color: #ede6df;" align=3D"left">Tamilarasan<br style=3D"background-color=
+: #ede6df !important; border-color: #ede6df;"/>S2, Vignesham Appartments, S=
+ilapathigaram street, Sirinivasa Nagar, perungalathur<br style=3D"backgroun=
+d-color: #ede6df !important; border-color: #ede6df;"/>Chennai 600063<br sty=
+le=3D"background-color: #ede6df !important; border-color: #ede6df;"/> TN<br=
+ style=3D"background-color: #ede6df !important; border-color: #ede6df;"/>In=
+dia<br style=3D"background-color: #ede6df !important; border-color: #ede6df=
+;"/><span data-key=3D"16030667_tel" style=3D"text-align: center; direction:=
+ ltr; font-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;=
+Segoe UI&#39;,Arial,sans-serif; font-size: 15px; line-height: 20px; font-we=
+ight: 400; text-transform: none; color: #0c475c; background-color: #ede6df =
+!important; border-color: #ede6df;">Tel.</span> <span style=3D"color: inher=
+it !important; text-decoration: none !important; text-align: center; direct=
+ion: ltr; font-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&=
+#39;Segoe UI&#39;,Arial,sans-serif; font-size: 15px; line-height: 20px; fon=
+t-weight: 400; text-transform: none; background-color: #ede6df !important; =
+border-color: #ede6df;">+917373446804</span><br style=3D"background-color: =
+#ede6df !important; border-color: #ede6df;"/></p>
+                                                                      </th>
+                                                                    </tr>
+                                                                   =20
+                                                                 =20
+                                                               =20
+                                                                </tbody></t=
+able>
+                                                              </th>
+                                                              <!-- END : Co=
+lumn 1 of 2 : BILL_TO -->
+                                                              <!-- BEGIN : =
+Column 2 of 2 : SHIP_TO -->
+                                                              <th width=3D"=
+50%" class=3D"column_2_of_2 column_ship_to " style=3D"mso-line-height-rule:=
+ exactly; border-color: #ede6df;" align=3D"left" bgcolor=3D"#ede6df" valign=
+=3D"top">
+                                                                <table alig=
+n=3D"center" border=3D"0" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0=
+" style=3D"min-width: 100%; direction: ltr; border-color: #ede6df;" role=3D=
+"presentation" bgcolor=3D"#ede6df">
+                                                                 =20
+                                                                   =20
+                                                                      <tbod=
+y><tr style=3D"border-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                                        <th=
+ style=3D"mso-line-height-rule: exactly; padding-left: 10px; border-color: =
+#ede6df;" align=3D"left" bgcolor=3D"#ede6df" valign=3D"top">
+                                                                          <=
+h3 data-key=3D"16030667_bill_to" style=3D"font-family: &#39;Verdana&#39;,-a=
+pple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; color: =
+#cc664e; font-size: 14px; line-height: 20px; font-weight: 400; text-transfo=
+rm: none; border-bottom-width: 1px; border-bottom-style: solid; padding-bot=
+tom: 5px; background-color: #ede6df !important; margin: 0 0 10px; border-co=
+lor: #ede6df;" align=3D"left">Customer</h3>
+                                                                        </t=
+h>
+                                                                      </tr>
+                                                                   =20
+                                                                    <tr sty=
+le=3D"border-color: #ede6df;" bgcolor=3D"#ede6df">
+                                                                      <th c=
+lass=3D"billing_address " style=3D"mso-line-height-rule: exactly; padding-l=
+eft: 10px; border-color: #ede6df;" align=3D"left" bgcolor=3D"#ede6df" valig=
+n=3D"top">
+<p style=3D"mso-line-height-rule: exactly; direction: ltr; font-family: &#3=
+9;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sa=
+ns-serif; font-size: 15px; line-height: 20px; font-weight: 400; text-transf=
+orm: none; color: #0c475c; background-color: #ede6df !important; margin: 0;=
+ border-color: #ede6df;" align=3D"left">Tamilarasan<br style=3D"background-=
+color: #ede6df !important; border-color: #ede6df;"/>S2, Vignesham Appartmen=
+ts, Silapathigaram street, Sirinivasa Nagar, perungalathur<br style=3D"back=
+ground-color: #ede6df !important; border-color: #ede6df;"/>Chennai 600063<b=
+r style=3D"background-color: #ede6df !important; border-color: #ede6df;"/> =
+TN<br style=3D"background-color: #ede6df !important; border-color: #ede6df;=
+"/>India<br style=3D"background-color: #ede6df !important; border-color: #e=
+de6df;"/><span data-key=3D"16030667_tel" style=3D"text-align: center; direc=
+tion: ltr; font-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,=
+&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 15px; line-height: 20px; fo=
+nt-weight: 400; text-transform: none; color: #0c475c; background-color: #ed=
+e6df !important; border-color: #ede6df;">Tel.</span> <span style=3D"color: =
+inherit !important; text-decoration: none !important; text-align: center; d=
+irection: ltr; font-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemF=
+ont,&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 15px; line-height: 20px=
+; font-weight: 400; text-transform: none; background-color: #ede6df !import=
+ant; border-color: #ede6df;">+917373446804</span><br style=3D"background-co=
+lor: #ede6df !important; border-color: #ede6df;"/><a href=3D"mailto:ptsntam=
+il@gmail.com" style=3D"color: #0c475c; text-decoration: none !important; te=
+xt-underline: none; word-wrap: break-word;">ptsntamil@gmail.com</a>
+                                                                          <=
+/p>
+                                                                        </t=
+h>
+                                                                      </tr>
+                                                                   =20
+                                                                      </tbo=
+dy></table>
+                                                                    </th>
+                                                                    <!-- EN=
+D : Column 2 of 2 : SHIP_TO -->
+                                                                  </tr>
+                                                                </tbody></t=
+able>
+                                                              </th>
+                                                              <!-- END : 2 =
+COLUMNS : SHIP_TO -->
+                                                            </tr>
+                                                          </tbody></table>
+                                                        </th>
+                                                      </tr>
+                                                      <!-- END SECTION: Cus=
+tomer And Shipping Address -->
+                                                      <!-- BEGIN SECTION: O=
+rder Notes -->
+                                                      <tr id=3D"section-160=
+30668" class=3D"section order_notes">
+                                                        <th class=3D"sectio=
+n_border" style=3D"mso-line-height-rule: exactly; padding: 0 80px;" bgcolor=
+=3D"#fcf7f3">
+                                                          <table border=3D"=
+0" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" styl=
+e=3D"min-width: 100%; direction: ltr;" role=3D"presentation">
+                                                            <tbody><tr>
+                                                             =20
+                                                                <th class=
+=3D"section_content" style=3D"mso-line-height-rule: exactly; padding: 20px;=
+ border-color: #ede6df;" bgcolor=3D"#ede6df" valign=3D"top">
+                                                                  <h3 data-=
+key=3D"16030668_order_notes" style=3D"font-family: &#39;Verdana&#39;,-apple=
+-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; color: #cc6=
+64e; font-size: 14px; line-height: 20px; font-weight: 400; text-transform: =
+none; border-bottom-width: 1px; border-bottom-style: solid; padding-bottom:=
+ 5px; background-color: #ede6df !important; margin: 0 0 10px; border-color:=
+ #ede6df;" align=3D"left">Order Notes</h3>
+                                                                  <p style=
+=3D"mso-line-height-rule: exactly; direction: ltr; font-family: &#39;Verdan=
+a&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif=
+; font-size: 15px; line-height: 20px; font-weight: 400; text-transform: non=
+e; color: #0c475c; background-color: #ede6df !important; margin: 0; border-=
+color: #ede6df;" align=3D"center">
+                                                                    <br sty=
+le=3D"background-color: #ede6df !important; border-color: #ede6df;"/>
+                                                                  </p>
+                                                                </th>
+                                                             =20
+                                                            </tr>
+                                                          </tbody></table>
+                                                        </th>
+                                                      </tr>
+                                                      <!-- END SECTION: Ord=
+er Notes -->
+                                                      <!-- BEGIN SECTION: S=
+pacer -->
+                                                      <tr id=3D"section-160=
+30669" class=3D"section spacer">
+                                                        <th class=3D"sectio=
+n_border" style=3D"mso-line-height-rule: exactly; padding: 20px 40px;" bgco=
+lor=3D"#fcf7f3">
+                                                          <table border=3D"=
+0" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" styl=
+e=3D"min-width: 100%; direction: ltr;" role=3D"presentation">
+                                                            <tbody><tr>
+                                                              <th height=3D=
+"10" style=3D"height: 10px; line-height: 10px; font-size: 0; mso-line-heigh=
+t-rule: exactly;" bgcolor=3D"#fcf7f3" valign=3D"top">
+                                                                =C2=A0
+                                                              </th>
+                                                            </tr>
+                                                          </tbody></table>
+                                                        </th>
+                                                      </tr>
+                                                      <!-- END SECTION: Spa=
+cer -->
+                                                      <!-- BEGIN SECTION: O=
+rder Status Button -->
+                                                      <tr id=3D"section-160=
+30670" class=3D"section order_status_button">
+                                                        <th class=3D"sectio=
+n_border" style=3D"mso-line-height-rule: exactly; padding: 5px 80px;" bgcol=
+or=3D"#fcf7f3">
+                                                          <table border=3D"=
+0" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" styl=
+e=3D"min-width: 100%; direction: ltr;" role=3D"presentation">
+                                                            <tbody><tr>
+                                                              <th class=3D"=
+section_content" style=3D"mso-line-height-rule: exactly; padding: 5px 20px;=
+" bgcolor=3D"#fcf7f3" valign=3D"top">
+                                                                <table cell=
+spacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%" style=3D"direct=
+ion: ltr;">
+                                                                  <tbody><t=
+r>
+                                                                    <th cla=
+ss=3D"sides column_text_before_button" data-key=3D"16030670_text_before_but=
+ton" style=3D"mso-line-height-rule: exactly; direction: ltr; font-family: &=
+#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,=
+sans-serif; font-size: 15px; line-height: 20px; font-weight: 400; text-tran=
+sform: none; color: #0c475c; padding-bottom: 10px;" align=3D"center" bgcolo=
+r=3D"#fcf7f3" valign=3D"top">You can follow the status of your order by cli=
+cking the button below:
+                                                                    </th>
+                                                                  </tr>
+                                                                  <!-- Butt=
+on : BEGIN -->
+                                                                  <tr>
+                                                                    <th cla=
+ss=3D"sides column_button button5" style=3D"mso-line-height-rule: exactly; =
+margin: 0; padding: 10px 0;" align=3D"center" bgcolor=3D"#fcf7f3" valign=3D=
+"top">
+                                                                      <tabl=
+e cellspacing=3D"0" cellpadding=3D"0" border=3D"0" class=3D"button" role=3D=
+"presentation" style=3D"direction: ltr; text-align: center; margin: 0 auto;=
+" bgcolor=3D"transparent">
+                                                                        <tb=
+ody><tr>
+                                                                          <=
+th class=3D"button-inner" style=3D"mso-line-height-rule: exactly; border-ra=
+dius: 1px;" align=3D"center" bgcolor=3D"#0c475c" valign=3D"top">
+                                                                           =
+ <a class=3D"button-link" href=3D"https://zouk.co.in/_t/c/A1030004-1820FDEC=
+03E96530-132FA8A4?l=3DAAA8audLXGTNhLmrpI8r7hM0W2e%2BI%2Bqe6wIB3cZsuGkGfm%2B=
+kTDvyowV6N%2BcoJxjRGFmbJFypAWXtLlTN3%2FAYfDjT3%2BIznV558IlwXc1BLpceRFyOIVMS=
+s572HW1jg%2F%2B8uGAvL3R01cXSQ24iI6Fdnq%2BwRDCy9thuXxuV7AFtsJIcIex%2BNRPJzCT=
+F0X6eCHFOJsoL4D0iHEYLY70z20cFChs4G2ejHrDinzmaf5z9f6d4p8m1qQc8a6xBGwv9yebXQh=
+Z2OoGLCL3n%2BesgPwU1v%2FXhONqLzDGsVGTjINvytkqEFIQ45zot%2F5PcS%2BLis82pOamF2=
+hOYDv2L65ttrgkCwqNJ9mhj&amp;c=3DAABnfcuucy%2BQUmHOmS3Fwc8m3Al4jtKo6iArasPxs=
+KRjhZ0d2bwLqdN%2BYNWuEO9FQkNNl4rb3pfq3z3x6Q5wPuXvuvJcyjOt7UIaFofEG3ELAXwcNb=
+EHnHt%2B3p7hJ%2FrRqX9vwo53YX7%2B5d1J0Pq2rx0RmWyJs%2FR57BkCx%2BEku0gxyWmgo%2=
+FCIa%2BgMvUoKb1q%2Fdd7rSYYFIAMD4CZTEhwB1iBmpqyKAT7KT9%2FJQC7ESYUnJ9eP8Bs8sx=
+yUulQf%2BdMgrL6KWsdUZKH9PJ%2Bp5gJUDikKNWi8uk1phvwR8HG2XYTXOOnuF%2BYKZukHX8V=
+UkIWQ48cvWXk9aBDJ5jTtxJ%2FuqKJmXEnLrd0hoDYzJsqr%2F09YsyjTzZ6wbpxzxV5tYSIKEp=
+ZpPYdpuAQZusF4i2bIHjpUJhwwSGpjr%2BFiGsx0AahWpEOd4fZEJFP5SHUkiPjl4JjvbQIslou=
+Ha3Jq2A%3D%3D" target=3D"_blank" style=3D"color: #ffffff !important; text-d=
+ecoration: none !important; text-underline: none; word-wrap: break-word; li=
+ne-height: 15px; font-family: &#39;Verdana&#39;,-apple-system,BlinkMacSyste=
+mFont,&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 15px; font-weight: 40=
+0; text-transform: none; text-align: center; display: block; background-col=
+or: #0c475c; border-radius: 1px; padding: 1px 20px; border: 15px solid #0c4=
+75c;"><span class=3D"text-on-button" style=3D"line-height: 15px; color: #ff=
+ffff; font-weight: 400; text-decoration: none; text-underline: none; letter=
+-spacing: 0.5px;"><!--[if mso]>=C2=A0=C2=A0=C2=A0=C2=A0<![endif]--><span cl=
+ass=3D"text-on-button-inner" data-key=3D"16030670_text_on_button" style=3D"=
+line-height: 15px; color: #ffffff; font-weight: 400; text-decoration: none;=
+ text-underline: none; letter-spacing: 0.5px;">View Order Status &gt;</span=
+><!--[if mso]>=C2=A0=C2=A0=C2=A0=C2=A0<![endif]--></span></a>
+                                                                          <=
+/th>
+                                                                        </t=
+r>
+                                                                      </tbo=
+dy></table>
+                                                                    </th>
+                                                                  </tr>
+                                                                  <!-- Butt=
+on : END -->
+                                                                </tbody></t=
+able>
+                                                              </th>
+                                                            </tr>
+                                                          </tbody></table>
+                                                        </th>
+                                                      </tr>
+                                                      <!-- END SECTION: Ord=
+er Status Button -->
+                                                      <!-- BEGIN SECTION: C=
+losing Text -->
+                                                      <tr id=3D"section-160=
+30671" class=3D"section closing_text">
+                                                        <th class=3D"sectio=
+n_border" style=3D"mso-line-height-rule: exactly; padding: 5px 80px;" bgcol=
+or=3D"#fcf7f3">
+                                                          <table border=3D"=
+0" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" styl=
+e=3D"min-width: 100%; direction: ltr;" role=3D"presentation">
+                                                            <tbody><tr>
+                                                              <th data-key=
+=3D"16030671_closing_text" class=3D"section_content text" style=3D"mso-line=
+-height-rule: exactly; direction: ltr; font-family: &#39;Verdana&#39;,-appl=
+e-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; font-size:=
+ 15px; line-height: 20px; font-weight: 400; text-transform: none; color: #0=
+c475c; padding: 5px 20px;" align=3D"center" bgcolor=3D"#fcf7f3" valign=3D"t=
+op">
+                                                                <p style=3D=
+"mso-line-height-rule: exactly; direction: ltr; font-family: &#39;Verdana&#=
+39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; f=
+ont-size: 15px; line-height: 20px; font-weight: 400; text-transform: none; =
+color: #0c475c; margin: 0;" align=3D"center">Please read our <a href=3D"htt=
+ps://zouk.co.in/_t/c/A1030004-1820FDEC03E96530-132FA8A4?l=3DAADtkgbKj7E5P7v=
+Tw%2B7z3FK4%2Fl9URv5ga%2FZsXR%2Fo7MQ36tVp0XGYdecvny4EddFzgiYMiN6PQ8y3eBKQw8=
+jId%2BllfBOp1x%2BP0wsuAtmn6RQ6z3hf2RTxdcUR8q4K4vCbzrAevqO2OEa%2B1oOh5lOwX92=
+Y86MkHTuA%2FxmHMkFJTxq9d5FB03JVAwpJJiLe1OfZWETRaIjq6aMQ9WmLHKjRQ8I1CZHshphL=
+4CY5xhShArmj&amp;c=3DAADk9hBUlTah9C3J%2FLpy2fgFC5ADkUqU97d3dKRnWxnBpbPxGCFE=
+aDNIiFmYgeECh3RT7%2F4NL1Esm8o0zovkaxfbb2zXRZY5FrcvJGPIHPmSxIIXF5lfBdfROi6UC=
+zJLbPAjH%2Fir8NFB3d5QxS9D7jzsmkdn4%2FMCnSTZSmRqWleCm74vyKxKh1za9No0hmzPSS3t=
+uBMQlzGbmy9ZolPmeaGX1Q%2Bme1NFO8QTeQD5yPMDg7yqtCw%2FgxAOt51IJihsBPRpsKxMQpt=
+GRonBpWJBK1YXIwfUeGJYs57Ruxdr%2FhoQ0jIAX3hLaar747gBb73ukHopoPSag9L6kolgXFu8=
+1hvHk0FC%2BTlqMGEFdZ%2Bm8kd1FfeZKBOwR9x6TYYkm1LXahQ3tjgmhUlvyVjPWpcHFo4dywN=
+UBo3xqVy%2FAPbKMcuD2tPO7tuw5fWG%2BJURNjQurserhzWXK9vLZX2xyg%3D%3D" style=3D=
+"color: #0c475c; text-decoration: none !important; text-underline: none; wo=
+rd-wrap: break-word;">Refunds and Exchange policy</a> carefully. If you hav=
+e any questions, reply to this email or contact us at online@zouk.co.in</p>
+                                                                <p style=3D=
+"mso-line-height-rule: exactly; direction: ltr; font-family: &#39;Verdana&#=
+39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; f=
+ont-size: 15px; line-height: 20px; font-weight: 400; text-transform: none; =
+color: #0c475c; margin: 10px 0 0;" align=3D"center"><br/>
+                                                                </p>
+                                                                <p style=3D=
+"mso-line-height-rule: exactly; direction: ltr; font-family: &#39;Verdana&#=
+39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; f=
+ont-size: 15px; line-height: 20px; font-weight: 400; text-transform: none; =
+color: #0c475c; margin: 10px 0 0;" align=3D"center"><b>Disclaimer: </b>Any =
+representative of Zouk will never ask for money in exchange for providing d=
+eals/offers/products from you. Beware of any such scams and report such act=
+ivities through our official email id - online@zouk.co.in.<br/>
+                                                                </p>
+                                                              </th>
+                                                            </tr>
+                                                          </tbody></table>
+                                                        </th>
+                                                      </tr>
+                                                      <!-- END SECTION: Clo=
+sing Text -->
+                                                      <!-- BEGIN SECTION: I=
+mage -->
+                                                      <tr id=3D"section-160=
+35072" class=3D"section image">
+                                                        <th class=3D"sectio=
+n_border" style=3D"mso-line-height-rule: exactly; padding: 5px 80px;" bgcol=
+or=3D"#fcf7f3">
+                                                          <table border=3D"=
+0" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" styl=
+e=3D"min-width: 100%; direction: ltr;" role=3D"presentation">
+                                                            <tbody><tr>
+                                                              <th class=3D"=
+section_content image_container center" style=3D"mso-line-height-rule: exac=
+tly; padding: 5px 20px;" align=3D"center" bgcolor=3D"#fcf7f3" valign=3D"top=
+">
+                                                                <img src=3D=
+"https://cdn.filestackcontent.com/api/file/AoDGANXYThyyaXX1wNJF" class=3D"c=
+ampaign_image" width=3D"600" height=3D"auto" border=3D"0" style=3D"width: 1=
+00%; height: auto !important; display: block; max-width: 600px; margin: aut=
+o;"/>
+                                                              </th>
+                                                            </tr>
+                                                          </tbody></table>
+                                                        </th>
+                                                      </tr>
+                                                      <!-- END SECTION: Ima=
+ge -->
+                                                      <!-- BEGIN SECTION: T=
+ext -->
+                                                      <tr id=3D"section-239=
+21770" class=3D"section text" style=3D"direction: ltr; font-family: &#39;Ve=
+rdana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-s=
+erif; font-size: 15px; line-height: 20px; font-weight: 400; text-transform:=
+ none; color: #0c475c;" align=3D"center">
+                                                        <th class=3D"sectio=
+n_border" style=3D"mso-line-height-rule: exactly; padding: 0 80px;" bgcolor=
+=3D"#fcf7f3">
+                                                          <table border=3D"=
+0" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" styl=
+e=3D"min-width: 100%; direction: ltr;" role=3D"presentation">
+                                                            <tbody><tr>
+                                                              <th data-key=
+=3D"23921770_text" class=3D"section_content text " style=3D"mso-line-height=
+-rule: exactly; direction: ltr; font-family: &#39;Verdana&#39;,-apple-syste=
+m,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 15px; =
+line-height: 20px; font-weight: 400; text-transform: none; color: #0c475c; =
+padding: 20px; border-color: #ede6df;" align=3D"center" bgcolor=3D"#ede6df"=
+ valign=3D"top">
+                                                                <b style=3D=
+"background-color: #ede6df !important; border-color: #ede6df;">Billed &amp;=
+ Shipped By</b>
+                                                                <p style=3D=
+"mso-line-height-rule: exactly; direction: ltr; font-family: &#39;Verdana&#=
+39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; f=
+ont-size: 15px; line-height: 20px; font-weight: 400; text-transform: none; =
+color: #0c475c; background-color: #ede6df !important; margin: 0; border-col=
+or: #ede6df;" align=3D"center">GSTIN : 27AAXCS2385L1ZE</p>
+                                                                SEA TURTLE =
+PRIVATE LIMITED<br style=3D"background-color: #ede6df !important; border-co=
+lor: #ede6df;"/>
+                                                                BLDG NO K6 =
+AND K7 GALA NO 1 TO 13, FLOOR NO 1, SHREE ARIHANT<br style=3D"background-co=
+lor: #ede6df !important; border-color: #ede6df;"/>
+                                                                COMPOUND, R=
+ETI BUNDER ROAD, KOPAR<br style=3D"background-color: #ede6df !important; bo=
+rder-color: #ede6df;"/>
+                                                                THANE 42130=
+2 MAHARASHTRA.<br style=3D"background-color: #ede6df !important; border-col=
+or: #ede6df;"/>
+                                                              </th>
+                                                            </tr>
+                                                          </tbody></table>
+                                                        </th>
+                                                      </tr>
+                                                      <!-- END SECTION: Tex=
+t -->
+                                                    </tbody></table>
+                                                  </td>
+                                                </tr>
+                                              </tbody></table>
+                                              <!-- END : SECTION : MAIN -->
+                                              <!-- BEGIN : SECTION : FOOTER=
+ -->
+                                              <table class=3D"sections_cont=
+ainer footer" data-id=3D"footer" id=3D"section-footer" border=3D"0" width=
+=3D"100%" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" style=3D"min=
+-width: 100%; direction: ltr;" role=3D"presentation" bgcolor=3D"#fcf7f3">
+                                                <tbody><tr style=3D"" align=
+=3D"center">
+                                                  <td class=3D"section_bord=
+er" style=3D"mso-line-height-rule: exactly; padding: 30px 80px 20px;" align=
+=3D"center" bgcolor=3D"#fcf7f3">
+                                                    <table border=3D"0" wid=
+th=3D"100%" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" style=3D"m=
+in-width: 100%; direction: ltr; text-align: center;" role=3D"presentation">
+                                                      <tbody><tr style=3D""=
+ align=3D"center">
+                                                        <th class=3D"column=
+_social" data-id=3D"social" style=3D"mso-line-height-rule: exactly;" align=
+=3D"center" bgcolor=3D"#fcf7f3">
+                                                          <table border=3D"=
+0" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"direction: ltr; text-align: center;">
+                                                            <!-- Store Addr=
+ess : BEGIN -->
+                                                            <tbody><tr styl=
+e=3D"" align=3D"center">
+                                                              <th class=3D"
+        column_shop_social_icons
+        table_content
+      " width=3D"100%" style=3D"mso-line-height-rule: exactly; padding-top:=
+ 5px; padding-bottom: 5px;" align=3D"center" bgcolor=3D"#fcf7f3">
+                                                                <a class=3D=
+"social-link" href=3D"https://zouk.co.in/_t/c/A1030004-1820FDEC03E96530-132=
+FA8A4?l=3DAAD3fRmo7fQ%2ByvXJib3eb%2FMSb2A9116HyynYMwke7fI5gf4ImJfYAXTQ%2BWu=
+3cDb%2Fm2zqBPPID%2Fh8p7ftqzr4zABTSNnV1rFflxvVMbiJMY%2BxgkBOtClRwfJFVel6LbWr=
+zcAL%2ByeXzeBeD%2F0l65u%2Bx5rQCIuxQkwdMQpMpAwCQye7nQ%3D%3D&amp;c=3DAABv8RPF=
+RTbGH%2B8bYPbt4IF1nrCn%2F9sfdM2wH0EVvc3AI3OxULVptv6s2KX9OZ4MWLtQmAv0KmqD0eC=
+PQtQU6BxlmyXhrlc1BpjeKeRe5lyj3ICfC1ycJFm%2BvtsJT9jN5D07zPuttmoogbaOrxUfpIay=
+Eug0cC0fIlucr1cdbfkLo1kFFIL26WPpxs3w%2BgOq%2BuO3vPLufeO1%2Bxn9kRc6U9Q3OBWh2=
+HwVF6WtEMj%2FhphxzS0BXO%2BmIYeNPnb0m%2B9rKjf2BsUhc%2BW7VtX8I5bV%2F1Q99b0RVT=
+38x30IaUZdi5Rkkex%2FvkcRmA83FbVq5QJVPdxgEcN1Xf%2FJCRly%2BWzY9fOqi5PTxZgYYHB=
+DqQ2ravMpffZRe%2BoOLjJ7oWH1uOnr8ah7%2Bg0ZSPs%2By1jofOHSKCjdpcK3byLSPCBv6fr%=
+2Fgy9Zyo6cxUfKEeFPsG1rKhFkEtJm04%2Fsb%2Bfb%2BlFUaA%3D%3D" target=3D"_blank"=
+ title=3D"Facebook" style=3D"color: #0c475c; text-decoration: none !importa=
+nt; text-underline: none; font-size: 14px; text-align: center;">
+                                                                  <img widt=
+h=3D"26" class=3D"social-icons" alt=3D"Facebook" src=3D"https://www.orderly=
+emails.com/facebook_9.png" style=3D"width: 26px; height: auto !important; v=
+ertical-align: middle; text-align: center; padding: 10px;"/>
+                                                                </a>
+                                                                <a class=3D=
+"social-link" href=3D"https://zouk.co.in/_t/c/A1030004-1820FDEC03E96530-132=
+FA8A4?l=3DAABuMYB7y1O55rMx6mlmixTLhlslVIpr%2FqEty42pS7kv4lFXmg92TQeH63aNMdi=
+cG4HYvu%2FA90lVIxAV5yUvEh6B4DTx%2BRvfDFtJgUM3yCGasgENrdjH1LwofzzRxUkaqjiO95=
+7oGXQ2RyPU0N1UOMEfXriCKwf4jZyf8g%3D%3D&amp;c=3DAAAP33R2u9jAJXKIkSWnyvEBfk76=
+EoFvvrHIiAJcVkq8a0IUjGUj%2BVCSwkTa1SrlLbZ%2FLbtsvVYp79Xj5XkWCxsNkaq2ESu0L5s=
+OrtM9mgcVJDEcDRNpvMptTxA%2BJAzRr0y6jXcKIVlKGQ6RJJh0e0CbmqAEau6WgEzTw8Vx%2FZ=
+QkE1a2ZlVoxpoyCMVOv94IGi%2FzO8ozSphG85bh8aEQt8BFR5XnTS6rnOqgZ67Hp9QSBvD0rB%=
+2Fhy3%2BKEPt5FOB2TwIPrtMSIBcyuiM0BLYJfD3uGQeK1m%2B1%2Bvd0B%2B1qsdXh4wJSifDk=
+JJ7faOjgq4mih2bFgA%2FKqD3YIWkKiKawRt90aJRTefjGZJxoX1zhXtd9g1SWOcgc0tiU4E9Db=
+1TgjSuhm6loIbK6MyvnHzIpz4JhGGPtylF7TfBdE5CvDFm%2Fdm9v7yAysmd9154CgsKAdVL%2B=
+5lX%2B%2BSrMGgZP0w%3D%3D" target=3D"_blank" title=3D"Twitter" style=3D"colo=
+r: #0c475c; text-decoration: none !important; text-underline: none; font-si=
+ze: 14px; text-align: center;">
+                                                                  <img widt=
+h=3D"26" class=3D"social-icons" alt=3D"Twitter" src=3D"https://www.orderlye=
+mails.com/twitter_9.png" style=3D"width: 26px; height: auto !important; ver=
+tical-align: middle; text-align: center; padding: 10px;"/>
+                                                                </a>
+                                                                <a class=3D=
+"social-link" href=3D"https://zouk.co.in/_t/c/A1030004-1820FDEC03E96530-132=
+FA8A4?l=3DAADW9Oc6kRMqF22y56DXvcVOqNecZ8TToAtO1bWozzjPttWIvtMCZnCu6qqAKiPAf=
+WcNzgbqrIE%2BkxMQzvgjaPG%2Fv3wZ%2Fr9ScSnxHG6uPWEdN9UNGe1%2B1Wg4j8uqBT6JC3sH=
+594L7ImRxNnd9tATgs9lAIpuh9%2BDbBUaQZr6u%2BfsrH2z&amp;c=3DAADNVriCTJjv8CnX7U=
+Ru5ig6ajVq%2BA4eWkkveTaPZbpYWTpcmyJmAhfrw6fVz1A%2FZtuuLuuzqmxyRyYYeOlx%2Bvr=
+u1HcTg5j66ntc7RWpZG38ydO7R%2BBOahokxCfXGKqHAlHNYFgGAbv1f5V7rPOVKA9ZNORak98K=
+MwJYibfImaHPVVt%2BuiSIaKrXNrosE8Anpp8vzgSl8t%2B1J6v70s5aUxAV%2Fz69EXvWafwJh=
+WoTni0JTTjfIya98eFYXLoLU4RuhlUX8J941HTWxFxeEg8Wm4rgVO8x2j%2F%2BNS5AZ4HCnPPY=
+mNVJdDxE1UwzVGd2vADEAQ7mleaN2YMsKHIp3n4QMvqpNSzDezgayVx3wYb5lmug6R1ozsAM%2F=
+4XJOAPPyU9wtjXpZVTYIOlSfKbJ%2FlsCZUk2ziY2S9f%2BuJb7y8CqdMTMj3mVdA4gCLg3kAXc=
+sl65eTe7gO2TjEniuEVwQQ%3D%3D" target=3D"_blank" title=3D"Instagram" style=
+=3D"color: #0c475c; text-decoration: none !important; text-underline: none;=
+ font-size: 14px; text-align: center;">
+                                                                  <img widt=
+h=3D"26" class=3D"social-icons" alt=3D"Instagram" src=3D"https://www.orderl=
+yemails.com/instagram_9.png" style=3D"width: 26px; height: auto !important;=
+ vertical-align: middle; text-align: center; padding: 10px;"/>
+                                                                </a>
+                                                                <a class=3D=
+"social-link" href=3D"https://zouk.co.in/_t/c/A1030004-1820FDEC03E96530-132=
+FA8A4?l=3DAAAVfLOn%2FcBETG15hxXOBF%2Bs7Ui3D7xyI%2BLxVJaV00rhVFD3Vnh%2FuDGH6=
+clYwX%2BaPaHyVwVhE3mZfhGGPEK9Uv96baOdjDRL7vOC99imd8hRkBE77PCQHlpSP8cehVVegS=
+4tY0kXM%2FVhZwfJtHUat59FWGgKj3nSc5nnksE6TT4YBVM%3D&amp;c=3DAAB68HKlrYTiyteS=
+PkFk8MuN4TIL1APUH4zs2tPGMGPAtNfybPJKJBa1f9hVxOh1BDhmpXSSjx85jp4AFEntXTrEAeG=
+YI1lKLSh2Ap2jMeGjDAIZ7lKDD5TtJ24yonLzytQsB%2BISL2R0fsxXZFl9fEsL4g8seke8fIUn=
+epk%2BWMvncS7nxUyNMk8DXa9knoncJeiMwuZYS2vFONzPaXZUx%2F6mbrCQn%2FysqErbqZbLo=
+u2dKlmef0XlaZNBzGwBPu%2FhtYBCqYW21aXAlWpvqhswl00hBqESfmmzF36fzNYG0nIvB%2B5J=
+nB0ZkZE%2B9yLCGdaXrLW9sjrcBZKhS7aB6DAnZOsMUscRaxzUuKRpGUAVuc6pdlDPdZjWjiK6r=
+hHOesRrMFk7%2Fuzb2M38TvJztiTFaq%2BCZrqsZ1bmmJydKRiFl0q%2BkdMQOfHd0FdCyRBRxh=
+QD68IrxEJkYbCZAVC9BA%3D%3D" target=3D"_blank" title=3D"Pinterest" style=3D"=
+color: #0c475c; text-decoration: none !important; text-underline: none; fon=
+t-size: 14px; text-align: center;">
+                                                                  <img widt=
+h=3D"26" class=3D"social-icons" alt=3D"Pinterest" src=3D"https://www.orderl=
+yemails.com/pinterest_9.png" style=3D"width: 26px; height: auto !important;=
+ vertical-align: middle; text-align: center; padding: 10px;"/>
+                                                                </a>
+                                                                <a class=3D=
+"social-link" href=3D"https://zouk.co.in/_t/c/A1030004-1820FDEC03E96530-132=
+FA8A4?l=3DAACJaph87328d%2BVQpKrOT4tMqkk16DlFUbEPKuXscjDPI3TX48C%2BmvNMFLgPz=
+7JeZNEa6UuJOfC4mT1MA6i5sT0bdYPETAyPcvO%2FwA%2F%2FaR9mgqSA%2FyG75gvONRebuBkj=
+WrkhuOk2W4llBQgbRuEXHbUm6MDfb6VW%2BKdnSK%2BXhSnduw1QEVr9y0URq5CqdphxJOw9%2F=
+11u4A%3D%3D&amp;c=3DAABtijUVimYzhytK9%2B086ZHF8JLhNPS1aSigXzVf0RdOoAtZaxzsq=
+JpszAjKalpaNOtI9gpuYEgIgv8Je9KinJFt0LZ7PY9hkBSPr00Pv5JPw2J%2BSHfhSclsHq%2BR=
+9Jm%2FpLPvQ3MFf55DFZ0Xxwyaaygfag3p0w3IX0zZugi86Fn1WFwiJ%2FJaBq66naZJjaKbyL%=
+2BZtwlCjBNnSnHUYzWCvXp4m2bL7MDOaA94lUsA2tBLochoIQ4SV%2BlfRd%2FBesvJsill8YkA=
+zEXkHvTNx7jflzKOisLfOiHJiBUHX%2FHT86vBYKVSVjbeQ%2BIh4OUaSaqjoKQ2i0FkYzfpqtc=
+VxlhLsL0UO7iNhhQwNEAG59DHwhFtNjkccOLtrqrEBkGIZ9Wk0tAYEkou10DMGW4Nf2pb%2Fni%=
+2BXChN51y8HwAMCcQMTshxIKhFzCOyiStA51PW%2BCzetH74G0bZ%2FnCwCLmL0g%3D%3D" tar=
+get=3D"_blank" title=3D"YouTube" style=3D"color: #0c475c; text-decoration: =
+none !important; text-underline: none; font-size: 14px; text-align: center;=
+">
+                                                                  <img widt=
+h=3D"26" class=3D"social-icons" alt=3D"YouTube" src=3D"https://www.orderlye=
+mails.com/youtube_9.png" style=3D"width: 26px; height: auto !important; ver=
+tical-align: middle; text-align: center; padding: 10px;"/>
+                                                                </a>
+                                                                <a class=3D=
+"social-link" href=3D"https://zouk.co.in/_t/c/A1030004-1820FDEC03E96530-132=
+FA8A4?l=3DAABJevcJjpohBgGeycUOtZhd%2BT6utjcorXCapwKwbO7dVo1VPPVMYCcDdvLTL0G=
+KYFUhSWsICqxln%2F6zRSi1xGgB49HEYB0psVt2n0iKzt3jI%2BCAj%2FJ08CFUBW1xGUaEPzQA=
+%2BcVZ0v4ci8MMgY38LaNSR2A%2BaPj6hESadXhzP6y%2BrWGn&amp;c=3DAAA3dIqERs%2F3qt=
+%2F%2F4rja406lVmVBUkaFSWkA8QSQ2tRCu0YCPQ8Nj2vp11UFYScAEtTWpRtCSRDfGyAk1PClg=
+pnSDafFG4V8wve8YTUn33hcgFPoSXOjRTBHNejWvZVMbQUmkuhS2Y5dpHvnn9oN673rbJsGNATU=
+r14Mdetir2ZdCiaIrtNgJhRYXjCAkFZs5Li5hojAO5q3rUKjQuUUmZFUOSSDvbqZiLfRQFNdQyX=
+SsCqtdrOV2kYqxFz2q%2FSH2%2FOCrOouCeIzVw3Nq12uitncuvtvUvV%2B81emJ%2FTbYeWRP5=
+qavxFtm9EdamspUtKqK3PRWpd49ahL8Pz%2BRgu5M3X%2BELtOiJOGMhhwStFcwoY%2FXt%2FV0=
+OOAK753KfiXlplfnCKspi1hRuM%2BJuxjAxr6ETbVqDBjZFj5o%2FBzalWvajePnkTvth3S1Acj=
+VgHIdZRqwAF5Q4aavhJWUQamjw%3D%3D" target=3D"_blank" title=3D"LinkedIn" styl=
+e=3D"color: #0c475c; text-decoration: none !important; text-underline: none=
+; font-size: 14px; text-align: center;">
+                                                                  <img widt=
+h=3D"26" class=3D"social-icons" alt=3D"LinkedIn" src=3D"https://www.orderly=
+emails.com/linkedin_9.png" style=3D"width: 26px; height: auto !important; v=
+ertical-align: middle; text-align: center; padding: 10px;"/>
+                                                                </a>
+                                                              </th>
+                                                            </tr>
+                                                          </tbody></table>
+                                                        </th>
+                                                      </tr>
+                                                      <tr style=3D"" align=
+=3D"center">
+                                                        <th class=3D"sectio=
+n_content" data-id=3D"store-info" style=3D"mso-line-height-rule: exactly; p=
+adding: 5px 20px;" align=3D"center" bgcolor=3D"#fcf7f3">
+                                                          <table border=3D"=
+0" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"direction: ltr; text-align: center;">
+                                                            <!-- Store Webs=
+ite : BEGIN -->
+                                                            <tbody><tr styl=
+e=3D"" align=3D"center">
+                                                              <th class=3D"=
+column_shop_block1 table_content" width=3D"100%" style=3D"mso-line-height-r=
+ule: exactly; padding-top: 5px; padding-bottom: 20px; font-family: &#39;Ver=
+dana&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-se=
+rif; font-size: 14px; line-height: 20px; font-weight: 400; color: #0c475c; =
+text-transform: none;" align=3D"center" bgcolor=3D"#fcf7f3">
+                                                                <a href=3D"=
+https://zouk.co.in/_t/c/A1030004-1820FDEC03E96530-132FA8A4?l=3DAACl76Z9uNCX=
+wG7jyLfopN4fXJiRhkZ3qwl7Djkg4NuKnHJfSAz5sYTedvA%2F3F2ro7w8m1kXl6QC2bB8c6Mxx=
+xglGb9wvTHPvlfK1v3oxKh1xxhXyFJTFq%2BytC5ELszgiDfyBCcy%2FVLHrcmlYPhqkrLec%2F=
+ExOg7yeVwFHwcNBfOqXplK4O5mEZTdCBDudUD1jVnfBoHwmmB6eabX6kwQsxia45pqn%2BdppVH=
+%2BCHiqwRtLWBi5uNIbbzHSbNuTYIManuZocozskmbwZNkYE7BrT%2F0FFKJY7Myz87PjtB%2Bd=
+xPzNElPQOFeyqAq%2FesgxaTWa1Wg2H9yytObev8oyiho10XDGQzAVVMxD9z0mACTe9EXMajgRR=
+oKX3F2Xf1X8dzPy4g%3D%3D&amp;c=3DAAD9Q3ptjAHMqzaisLJjCW0erEB3j4Zw%2FodKyvNYV=
+cWMEXZ4BAnJ%2FrFgCG%2FtJ179YJ8%2F0yf2Qg%2B7c9UkBt%2FULqSNxQQXMd06rkqXxe73Jq=
+ByBW%2B%2FfrTVIrAy6sQERkQ%2ByxKfoM3sj%2FSrqTgMHHkWzVrFm3175QIMFzWj2mXjM58Si=
+H7Tgsv8S4HrRH5Tid38%2FnTEM5hw9mvG06XWYs%2FFHaqp2r1JbFs2GjWQwTD7gLG02dCNk%2B=
+8ELxfjVXmPEds5jRU3SnwvSne9lqLASJVUm3%2BTu1wrWiBCoQAvXl7impLT59rUvXoQGtRT7Gw=
+wBQptCmA%2BFs1rNA7Fs%2FRfZVoozPVaSJOrSfplYWdy9AvF3w8U23Va69q5wH593KC72vB1Ov=
+lrTI7wrS4VyH5%2B3IQPvCCdiRxY3w4onucE6rkrLjqAfIwICoeQzoTpvJpm9AQIQApv4%2BX39=
+UpjZQ626g%3D%3D" target=3D"_blank" data-key=3D"section_shop_block1" style=
+=3D"color: #0c475c; text-decoration: none !important; text-underline: none;=
+ font-size: 14px; font-weight: 400; text-transform: none; text-align: cente=
+r;"></a>
+                                                              </th>
+                                                            </tr>
+                                                            <!-- Store Webs=
+ite : END -->
+                                                            <!-- Store Addr=
+ess : BEGIN -->
+                                                            <tr style=3D"" =
+align=3D"center">
+                                                              <th class=3D"=
+column_shop_block2 table_content" data-key=3D"section_shop_block2" width=3D=
+"100%" style=3D"mso-line-height-rule: exactly; padding-top: 5px; padding-bo=
+ttom: 5px; font-family: &#39;Verdana&#39;,-apple-system,BlinkMacSystemFont,=
+&#39;Segoe UI&#39;,Arial,sans-serif; font-size: 14px; line-height: 20px; fo=
+nt-weight: 400; color: #0c475c; text-transform: none;" align=3D"center" bgc=
+olor=3D"#fcf7f3">
+                                                                <p style=3D=
+"mso-line-height-rule: exactly; direction: ltr; font-family: &#39;Verdana&#=
+39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; f=
+ont-size: 14px; line-height: 20px; font-weight: 400; text-transform: none; =
+color: #0c475c; margin: 0;" align=3D"center">online@zouk.co.in</p>
+                                                                <p style=3D=
+"mso-line-height-rule: exactly; direction: ltr; font-family: &#39;Verdana&#=
+39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,Arial,sans-serif; f=
+ont-size: 14px; line-height: 20px; font-weight: 400; text-transform: none; =
+color: #0c475c; margin: 10px 0 0;" align=3D"center">www.zouk.co.in</p>
+                                                                <br style=
+=3D"text-align: center;"/>
+                                                                Copyright =
+=C2=A9 2025
+                                                              </th>
+                                                            </tr>
+                                                            <!-- Store Addr=
+ess : END -->
+                                                          </tbody></table>
+                                                        </th>
+                                                      </tr>
+                                                      <tr style=3D"" align=
+=3D"center">
+                                                        <th height=3D"1" bo=
+rder=3D"0" style=3D"height: 1px; line-height: 1px; font-size: 1px; mso-line=
+-height-rule: exactly; padding: 0;" align=3D"center" bgcolor=3D"#fcf7f3">
+                                                          <img id=3D"open-i=
+mage" src=3D"https://zouk.co.in/tools/emails/open/order-confirmation/1" alt=
+=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"text-align: center;"/>
+                                                        </th>
+                                                      </tr>
+                                                    </tbody></table>
+                                                  </td>
+                                                </tr>
+                                              </tbody></table>
+                                              <!-- END : SECTION : FOOTER -=
+->
+                                            </th>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </center>
+                                  </th>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <!-- END : CONTAINER -->
+                         =20
+                       =20
+</body></html>
+--c769bd372ce9725b8d5b3b2ff2de4d9c180aea10cc3701259816afd75cd7--
