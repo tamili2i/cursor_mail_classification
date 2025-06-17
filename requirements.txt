@@ -4,3 +4,4 @@ prefect
 requests
 python-multipart
 pillow
+coverage
