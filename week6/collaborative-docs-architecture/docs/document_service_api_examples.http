@@ -1,0 +1,92 @@
+### Create Document
+POST http://localhost:8000/documents/
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "title": "My Document",
+  "content": "Initial content"
+}
+
+### List Documents
+GET http://localhost:8000/documents/
+Authorization: Bearer {{access_token}}
+
+### Get Document
+GET http://localhost:8000/documents/{{doc_id}}
+Authorization: Bearer {{access_token}}
+
+### Update Document
+PUT http://localhost:8000/documents/{{doc_id}}
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "title": "Updated Title",
+  "content": "Updated content"
+}
+
+### Delete Document
+DELETE http://localhost:8000/documents/{{doc_id}}
+Authorization: Bearer {{access_token}}
+
+### Get Versions
+GET http://localhost:8000/documents/{{doc_id}}/versions
+Authorization: Bearer {{access_token}}
+
+### Share Document
+POST http://localhost:8000/documents/{{doc_id}}/share
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "user_ids": ["user1", "user2"],
+  "permission": "read"
+}
+
+### Get Collaborators
+GET http://localhost:8000/documents/{{doc_id}}/collaborators
+Authorization: Bearer {{access_token}}
+
+### Search Documents
+GET http://localhost:8000/documents/search?q=term
+Authorization: Bearer {{access_token}}
+
+### File Upload
+POST http://localhost:8000/documents/{{doc_id}}/upload
+Authorization: Bearer {{access_token}}
+Content-Type: multipart/form-data
+
+### File Download
+GET http://localhost:8000/documents/{{doc_id}}/download
+Authorization: Bearer {{access_token}}
+
+### Analytics
+POST http://localhost:8000/documents/{{doc_id}}/analytics
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "event": "view",
+  "user_id": "...",
+  "timestamp": "...",
+  "details": {}
+}
+
+GET http://localhost:8000/documents/{{doc_id}}/analytics
+Authorization: Bearer {{access_token}}
+
+### Backup & Restore
+POST http://localhost:8000/documents/{{doc_id}}/backup
+Authorization: Bearer {{access_token}}
+
+POST http://localhost:8000/documents/{{doc_id}}/restore
+Authorization: Bearer {{access_token}}
+
+### Clone Document
+POST http://localhost:8000/documents/{{doc_id}}/clone
+Authorization: Bearer {{access_token}}
+
+### Export Document
+GET http://localhost:8000/documents/{{doc_id}}/export?format=pdf
+Authorization: Bearer {{access_token}} 

@@ -1,0 +1,152 @@
+version: '3.8'
+
+services:
+  user_service:
+    build: ./services/user_service
+    container_name: user_service
+    environment:
+      - JWT_SECRET_KEY=changeme
+      - POSTGRES_DSN=postgresql+asyncpg://user:password@db:5432/userdb
+      - REDIS_URL=redis://redis:6379/0
+      - CORS_ALLOW_ORIGINS=http://localhost
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks: [backend]
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.user_service.rule=PathPrefix(`/auth`)"
+      - "traefik.http.services.user_service.loadbalancer.server.port=8000"
+      - "traefik.http.routers.user_service.entrypoints=web"
+      - "prometheus.scrape=true"
+      - "prometheus.port=8000"
+
+  document_service:
+    build: ./services/document_service
+    container_name: document_service
+    environment:
+      - POSTGRES_DSN=postgresql+asyncpg://user:password@db:5432/userdb
+      - REDIS_URL=redis://redis:6379/0
+      - JWT_SECRET_KEY=changeme
+      - CORS_ALLOW_ORIGINS=http://localhost
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks: [backend]
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.document_service.rule=PathPrefix(`/documents`)"
+      - "traefik.http.services.document_service.loadbalancer.server.port=8000"
+      - "traefik.http.routers.document_service.entrypoints=web"
+      - "prometheus.scrape=true"
+      - "prometheus.port=8000"
+
+  collaboration_service:
+    build: ./services/collaboration_service
+    container_name: collaboration_service
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - DOCUMENT_SERVICE_URL=http://document_service:8000
+      - CORS_ALLOW_ORIGINS=http://localhost
+    depends_on:
+      redis:
+        condition: service_healthy
+      document_service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks: [backend]
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.collaboration_service.rule=PathPrefix(`/ws`)"
+      - "traefik.http.services.collaboration_service.loadbalancer.server.port=8000"
+      - "traefik.http.routers.collaboration_service.entrypoints=web"
+      - "prometheus.scrape=true"
+      - "prometheus.port=8000"
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: userdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks: [backend]
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks: [backend]
+
+  traefik:
+    image: traefik:v2.10
+    command:
+      - --api.insecure=true
+      - --providers.docker=true
+      - --entrypoints.web.address=:80
+      - --metrics.prometheus=true
+      - --metrics.prometheus.addEntryPointsLabels=true
+      - --metrics.prometheus.addServicesLabels=true
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/traefik.toml
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api.rule=Host(`traefik.localhost`)"
+      - "traefik.http.routers.api.service=api@internal"
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    networks: [backend]
+
+volumes:
+  pgdata:
+
+networks:
+  backend:
+    driver: bridge 

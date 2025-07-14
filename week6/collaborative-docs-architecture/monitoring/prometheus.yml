@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 15s
+scrape_configs:
+  - job_name: 'user_service'
+    static_configs:
+      - targets: ['user_service:8000']
+  - job_name: 'document_service'
+    static_configs:
+      - targets: ['document_service:8000']
+  - job_name: 'collaboration_service'
+    static_configs:
+      - targets: ['collaboration_service:8000']
+  - job_name: 'traefik'
+    static_configs:
+      - targets: ['traefik:8080'] 

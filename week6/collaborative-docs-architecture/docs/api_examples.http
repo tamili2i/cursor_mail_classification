@@ -1,0 +1,46 @@
+### Register
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "TestPassword1!",
+  "full_name": "User Name"
+}
+
+### Login
+POST http://localhost:8000/auth/login
+Content-Type: application/x-www-form-urlencoded
+
+username=user@example.com&password=TestPassword1!
+
+### Get Profile
+GET http://localhost:8000/auth/me
+Authorization: Bearer {{access_token}}
+
+### Update Profile
+PUT http://localhost:8000/auth/profile
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "full_name": "New Name",
+  "password": "NewPassword1!"
+}
+
+### Refresh Token
+POST http://localhost:8000/auth/refresh
+Content-Type: application/json
+
+{
+  "refresh_token": "{{refresh_token}}"
+}
+
+### Logout
+POST http://localhost:8000/auth/logout
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "refresh_token": "{{refresh_token}}"
+} 
